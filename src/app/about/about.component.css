@@ -1,0 +1,8 @@
+.skin {
+  height: auto;
+  background-image: url('../../assets/skin.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 510px;
+}

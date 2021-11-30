@@ -1,0 +1,106 @@
+
+@keyframes spinner {
+    to {transform: rotate(360deg);}
+  }
+   
+  .spinner:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    
+    left: 30%;
+    width: 90px;
+    height: 90px;
+    margin-top: -15px;
+    margin-left: -15px;
+    border-radius: 50%;
+    border: 3px solid #ccc;
+    border-top-color: #F7941D;
+    animation: spinner .6s linear infinite;
+  }
+
+h1{
+    text-align: center;
+    color: chocolate;
+  }
+  mat-spinner{
+    color: black;
+  }
+  .alert{
+  
+  }
+  ng-template .resetPass{
+    height: 50px;
+  }
+  
+  a{
+    cursor: pointer;
+  }
+  
+  .wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+   
+  
+  
+  
+  }
+  
+  #formContent {
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: #fff;
+    min-height: 380px;
+    width: 90%;
+    height: auto;
+    max-width: 450px;
+    position: relative;
+    padding: 0px;
+    -webkit-box-shadow: 0 10px 30px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 10px 30px 0 rgba(0,0,0,0.2);
+  
+  }
+  button[type=reset]{
+    display: flex;
+    text-decoration: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 100px;
+    margin: 10px 100%;
+    justify-content: flex-end;
+    flex-direction: row;
+    align-items:flex-end;
+    text-align: right;
+  
+  
+  }
+
+  
+  button{
+      cursor: pointer;
+      border: 0.5px solid;
+  }
+  #formFooter {
+    background-color: #f6f6f6;
+    border-top: 1px solid #dce8f1;
+    padding: 25px;
+    text-align: center;
+    -webkit-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

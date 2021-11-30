@@ -1,0 +1,13 @@
+@import '~ngx-toastr/toastr.css';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.myCustomModalClass .resetPass{
+    height: 500px;
+  
+  }
+  .myCustomModalClass{
+      margin-top: -70px;
+  }
+  .myCustomModalClass .resetPass .modal-footer{
+    margin-top: -200px;
+  }
