@@ -8,41 +8,71 @@
               <h4>Get in touch</h4>
               <h3>Write us a message</h3>
             </div>
-            <form class="form" method="post" action="mail/mail.php">
+            <form class="form"  [formGroup]="form" (ngSubmit)="onSubmit()">
               <div class="row">
                 <div class="col-lg-6 col-12">
                   <div class="form-group">
                     <label>Your Name<span>*</span></label>
-                    <input name="name" type="text" placeholder="">
+                    <input type="text" placeholder=""  formControlName="name" class="form-control"
+                           [ngClass]="{ 'is-invalid': submitted && form.controls.name.errors }">
+                    <div *ngIf="form.controls['name'].hasError('required')" class="invalid-feedback">
+                      <div>Name is required</div>
+                    </div>
+                    <div *ngIf="form.controls['name'].hasError('minlength')" class="invalid-feedback">
+                      <div>Name length must be higher than 6</div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-6 col-12">
                   <div class="form-group">
                     <label>Your Subjects<span>*</span></label>
-                    <input name="subject" type="text" placeholder="">
+                    <input type="text" placeholder="" formControlName="subject" class="form-control"
+                           [ngClass]="{ 'is-invalid': submitted && form.controls.subject.errors }">
+                    <div *ngIf="form.controls['subject'].hasError('required')" class="invalid-feedback">
+                      <div>Subject is required</div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-6 col-12">
                   <div class="form-group">
                     <label>Your Email<span>*</span></label>
-                    <input name="email" type="email" placeholder="">
+                    <input type="email" placeholder="" formControlName="email" class="form-control"
+                           [ngClass]="{ 'is-invalid': submitted && form.controls.email.errors }">
+                    <div *ngIf="form.controls['email'].hasError('required')" class="invalid-feedback">
+                      <div>Email is required</div>
+                    </div>
+                    <div *ngIf="form.controls['email'].hasError('email')" class="invalid-feedback">
+                      <div>Email is not valid</div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-6 col-12">
                   <div class="form-group">
                     <label>Your Phone<span>*</span></label>
-                    <input name="company_name" type="text" placeholder="">
+                    <input  type="text" placeholder="" formControlName="phone" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && form.controls.phone.errors }">
+                    <div *ngIf="form.controls['phone'].hasError('required')" class="invalid-feedback">
+                      <div>Phone Number is required</div>
+                    </div>
+                    <div *ngIf="form.controls['phone'].hasError('pattern')" class="invalid-feedback">
+                      <div>Phone Number must include only numbers</div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="form-group message">
                     <label>Your message<span>*</span></label>
-                    <textarea name="message" placeholder=""></textarea>
+                    <textarea placeholder="" formControlName="message" class="form-control"
+                              [ngClass]="{ 'is-invalid': submitted && form.controls.message.errors }"></textarea>
+                    <div *ngIf="form.controls['message'].hasError('required')" class="invalid-feedback">
+                      <div>Message is required</div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="form-group button">
-                    <button type="submit" class="btn ">Send Message</button>
+                    <button type="submit" class="btn " (click)="onSubmit()">Send Message</button>
+                    <button type="reset" class="btn bg-secondary float-md-right" (click)="onReset()">Cancel</button>
                   </div>
                 </div>
               </div>
@@ -55,23 +85,27 @@
               <i class="fa fa-phone"></i>
               <h4 class="title">Call us Now:</h4>
               <ul>
-                <li>+123 456-789-1120</li>
-                <li>+522 672-452-1120</li>
+                <li>+216 92 099 369</li>
+                <li>+216 92 099 369</li>
               </ul>
             </div>
             <div class="single-info">
               <i class="fa fa-envelope-open"></i>
               <h4 class="title">Email:</h4>
               <ul>
-                <li><a href="mailto:info@yourwebsite.com">info@yourwebsite.com</a></li>
-                <li><a href="mailto:info@yourwebsite.com">support@yourwebsite.com</a></li>
+                <li><a href="mailto:info@yourwebsite.com">ahlem.laajili@esprit.tn</a></li>
+                <li><a href="mailto:info@yourwebsite.com">mouheb.mhamdi@esprit.tn</a></li>
+                <li><a href="mailto:info@yourwebsite.com">mohamed.nalouti@esprit.tn</a></li>
+                <li><a href="mailto:info@yourwebsite.com">chaima.kefi@esprit.tn</a></li>
+                <li><a href="mailto:info@yourwebsite.com">sofiene.mokhaddem@esprit.tn</a></li>
+
               </ul>
             </div>
             <div class="single-info">
               <i class="fa fa-location-arrow"></i>
               <h4 class="title">Our Address:</h4>
               <ul>
-                <li>KA-62/1, Travel Agency, 45 Grand Central Terminal, New York.</li>
+                <li>Technological Pole El Ghazela, Ariana Tunis</li>
               </ul>
             </div>
           </div>
