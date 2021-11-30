@@ -89,7 +89,7 @@ export class AuthentificationService {
     sessionStorage.removeItem('email');
     sessionStorage.clear();
     localStorage.clear();
-    this.curUser.complete();
+    this.curUser.lift;
 
     
   }
