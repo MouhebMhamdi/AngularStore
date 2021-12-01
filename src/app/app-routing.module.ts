@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {ContactComponent} from "./contact/contact.component";
 import {AboutComponent} from "./about/about.component";
 import {NotFoundComponent} from "./app-shared/not-found/not-found.component";
 import {CommonModule} from "@angular/common";
@@ -10,7 +9,11 @@ import {AppCartComponent} from "./app-cart/app-cart.component";
 import { LoginComponent } from './authentificationAndRegister/login/login.component';
 import { LogoutComponent } from './authentificationAndRegister/logout/logout.component';
 import { ResetPasswordComponent } from './authentificationAndRegister/reset-password/reset-password.component';
+
+import {ContactComponent} from "./contact/contact.component";
+
 import { ProfileComponent } from './app-user/profile/profile.component';
+
 
 const routes: Routes = [
   {path: '', component: ContentComponent},
