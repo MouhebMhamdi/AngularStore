@@ -2,8 +2,9 @@ package tn.esprit.Dto;
 
 import lombok.*;
 
-@Getter
+
 @Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString

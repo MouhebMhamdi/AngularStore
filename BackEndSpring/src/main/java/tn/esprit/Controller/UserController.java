@@ -8,6 +8,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import tn.esprit.Dto.UserDto;
+import tn.esprit.Dto.contactUs;
 import tn.esprit.model.PasswordResetToken;
 import tn.esprit.model.Role;
 import tn.esprit.model.User;
@@ -175,7 +176,24 @@ public class UserController {
         cal1.add(Calendar.MINUTE, 5);
         return cal.getTime().before(cal1.getTime());
     }
+    @GetMapping("/contactUs")
+    public String contactUs(@RequestParam String name,@RequestParam String email,
+                            @RequestParam String subject,@RequestParam String messages,
+                            @RequestParam String phone
+    ) throws MessagingException {
+      MimeMessage message = emailSender.createMimeMessage();
+      boolean multipart = true;
+      MimeMessageHelper helper;
+      helper = new MimeMessageHelper(message, multipart, "utf-8");
+      message.setContent("<b>Client:</b> "+name+"<br><b> Phone:</b> "+phone+"<br> <b>Email:</b> "+email+"<br><b>Message: </b>"+messages, "text/html");
+      helper.setTo("webstore.4twin3@gmail.com");
+      helper.setSubject(subject);
+      emailSender.send(message);
 
+
+
+      return "Thanks ";
+    }
     @GetMapping("changePassword")
     public String newpass(@RequestParam("token") String token,@RequestParam("password") String password) throws Exception{
         MimeMessage message = emailSender.createMimeMessage();
