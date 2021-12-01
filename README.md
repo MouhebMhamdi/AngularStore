@@ -8,14 +8,13 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-<img src="C:\Users\MJ-INFO\Desktop\Integration Projet Spring-Angular\Group work\AngularStore\src\assets\store.jpg" alt="Logo" width="150" height="150"/>
+
+<img src="https://user-images.githubusercontent.com/78981558/144307220-97088e08-8895-4ddf-825e-01da5000f83d.jpg" width="150" height="150"/>
   
-</a>
+
 
 <h3 align="center">Angular Store-Template</h3>
 
@@ -57,7 +56,7 @@ This is the official Angular Store documentation <br/>
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![features1](C:\Users\MJ-INFO\Desktop\Integration Projet Spring-Angular\Group work\AngularStore\src\assets\readme\features1.png)](https://example.com)
+[![features1](./src/assets/readme/features1.png)](https://example.com)
 
 We have built an e-commerce website that features different products with different providers .
 Here's why:
