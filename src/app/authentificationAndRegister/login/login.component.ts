@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
   myFormReset:FormGroup;
   msg: string;
   loading$: Observable<boolean> = of(false);
+ 
   loading = false
   constructor(private spinner: NgxSpinnerService,private resetPasswordService:ResetPasswordService,private userService:UserService,private authService:AuthentificationService, /*private data: SharedDataService,*/ private router:Router, private f: FormBuilder,private toastr: ToastrService,private modalService: NgbModal)  { }
   
@@ -106,7 +107,7 @@ verifUserRoleConncet(email:string){
       this.authService.getUserConnect(String(email))
       
       .subscribe(user =>{
-      alert('hi')
+      
        console.log(user+"ezeeze") 
        /*
       this.tab=user;
@@ -119,14 +120,16 @@ verifUserRoleConncet(email:string){
   )
 }
   login(myForm:FormGroup){
-    this.authService.login(myForm.controls['email'].value,myForm.controls['password'].value).subscribe((user )=>{
+    this.authService.login(myForm.controls['email'].value,myForm.controls['password'].value).subscribe((user:any )=>{
       this.tab=user;
+      
       this.successMessage="Login Successful";
       
       this.verifUserRoleConncet(myForm.controls['email'].value);
-      this.curUser.next(this.tab);
+      this.curUser.next(this.tab['nom']);
+      console.log(user.data.nom)
       this.router.navigate(["/"]);
-
+      
     },()=>{
       this.msg = 'please give a valid account';
     }

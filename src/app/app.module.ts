@@ -37,6 +37,7 @@ import { LogoutComponent } from './authentificationAndRegister/logout/logout.com
 
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ResetPasswordComponent } from './authentificationAndRegister/reset-password/reset-password.component';
+import { ProfileComponent } from './app-user/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ResetPasswordComponent } from './authentificationAndRegister/reset-pass
     HeaderComponent,
     LoginComponent,
     LogoutComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

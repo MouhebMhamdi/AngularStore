@@ -10,6 +10,7 @@ import {AppCartComponent} from "./app-cart/app-cart.component";
 import { LoginComponent } from './authentificationAndRegister/login/login.component';
 import { LogoutComponent } from './authentificationAndRegister/logout/logout.component';
 import { ResetPasswordComponent } from './authentificationAndRegister/reset-password/reset-password.component';
+import { ProfileComponent } from './app-user/profile/profile.component';
 
 const routes: Routes = [
   {path: '', component: ContentComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'logout',component:LogoutComponent},
   {path:'newPassword',component:ResetPasswordComponent},
+  {path:'profile',component:ProfileComponent},
   {path: '**',component: NotFoundComponent }
 
 ];

@@ -29,8 +29,9 @@ export class AuthentificationService {
       { headers: { authorization: this.createBasicAuthToken(email, password) } }).pipe(map((res) => {
         this.email = email;
         this.password = password;
-       this.tab=res;
-
+         this.tab=res;
+        localStorage.setItem("data",this.tab['idClient']);
+        
        this.curUser.next(this.tab);
         this.registerSuccessfulLogin(email, password);  
 
