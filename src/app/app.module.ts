@@ -58,7 +58,7 @@ import { ProfileComponent } from './app-user/profile/profile.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule,
+    ToastrModule.forRoot(),
     FontAwesomeModule,
     NgbModule,
     NgxSpinnerModule
