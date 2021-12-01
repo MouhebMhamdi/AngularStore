@@ -5,6 +5,12 @@ export class Users{
     nom: string;
     prenom: string;
     dateNaissance: string;
+    state:string;
+    city:string;
+    rue:string;
+    tel:string;
+    zip:Int32Array;
+    street:string;
     profession:string;
     
   }

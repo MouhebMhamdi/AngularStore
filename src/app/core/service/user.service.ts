@@ -1,7 +1,7 @@
 import { HttpClient,HttpErrorResponse  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { throwError } from 'rxjs'; 
-import { catchError } from 'rxjs/operators';
+import { BehaviorSubject, throwError } from 'rxjs'; 
+import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Users } from '../../core/model/Users';
 
@@ -10,6 +10,11 @@ import { Users } from '../../core/model/Users';
 })
 export class UserService {
   url=environment.hostUrl;
+  user:Users = new Users();
+  tab:any=[];
+  public curUser= new BehaviorSubject(this.user);
+  sharedUser = this.curUser.asObservable();
+
   constructor(private http:HttpClient) { }
   
   addUser(data:Users){
@@ -27,6 +32,13 @@ export class UserService {
         })
     );
 
+  }
+
+  updateUser(data:Users,id:string){
+    return this.http.post(this.url+'/user/updateUser/'+id,data,{ observe: 'response' }).pipe(map((res) => {
+      this.tab=res;
+      this.curUser.next(this.tab);
+    }));
   }
   addRoleTOUser(email:string,role:string){
     return this.http.get(this.url+'/user/addRoleToUser/'+email+'/'+role,{responseType: 'text'}).pipe(
