@@ -20,7 +20,7 @@
             <li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
             <li *ngIf="users.email!=null" ><i class="ti-user"></i> <a routerLink="profile">My account</a></li>
             <li *ngIf="users.email==null"><i class="ti-power-off"></i><a routerLink="login">Login</a></li>
-            <li *ngIf="users.email!=null "><i class="ti-power-off"></i><button class="button" (click)="logout()">Logout</button></li>
+            <li *ngIf="users.email!=null"><i class="ti-power-off"></i><button class="button" (click)="logout()">Logout</button></li>
           </ul>
         </div>
         <!-- End Top Right -->
