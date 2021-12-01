@@ -11,6 +11,8 @@ import { AuthentificationService } from 'src/app/core/service/authentification.s
 export class HeaderComponent implements OnInit,OnChanges {
   users: Users;
   hide:boolean;
+  data:any;
+  
   constructor(public router: Router,private authService:AuthentificationService) {
   }
  
@@ -22,8 +24,8 @@ export class HeaderComponent implements OnInit,OnChanges {
       ()=>{},
       ()=>{this.users = new Users()}
     )
- 
- 
+      
+      this.data=localStorage.getItem("data");
   }
 
   ngOnChanges():void{

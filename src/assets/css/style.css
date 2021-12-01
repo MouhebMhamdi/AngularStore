@@ -298,6 +298,24 @@ Version:1.0
 .header .nav li .dropdown li:last-child a{
 	border-bottom:0px;
 }
+.button{
+	border-bottom:0px;
+}
+.button{
+	color:#666;
+	background:none;
+	border-color:transparent;
+	font-weight: 400;
+	text-transform: capitalize;
+	background: transparent;
+}
+.button::before{
+	display: none;
+}
+.button:hover{
+	color:#F7941D;
+	
+}
 .header .nav li .dropdown li:hover a{
 	color:#fff;
 	background:#F7941D;

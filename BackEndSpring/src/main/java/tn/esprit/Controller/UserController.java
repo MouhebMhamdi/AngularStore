@@ -76,10 +76,17 @@ public class UserController {
         return userService.getUserByEmail(email);
     }
 
+    @GetMapping("/updatePassword/{id}/{password}")
+    public User updateUserPassword(@PathVariable long id,@PathVariable String password){
+      userService.updateUserPassword(password,id);
+      User user=userService.getUserByIdClient(id);
+      return user;
+    }
+
     @PostMapping("/updateUser/{id}")
-    public String UpdateUser(@RequestBody User user, @PathVariable long id){
+    public User UpdateUser(@RequestBody User user, @PathVariable long id){
         userService.updateUser(user,id);
-        return "User updated successfuly Don !!";
+        return userService.getUserByIdClient(id);
     }
 
     @DeleteMapping("/DeleteAllUsers")
@@ -97,7 +104,7 @@ public class UserController {
         if(us!=null && passwordEncoder.matches(password,us.getPassword()) ){
 
                 return   us;
-           
+
 
         }else if(userService.getUserByEmail(email)!=null){
            throw new Exception("Password invalid");
@@ -182,9 +189,8 @@ public class UserController {
 
          User us=passwordResetTokens.getUser();
          if(us==null) throw new Exception("user invalid");
-         User user=new User();
-         user.setPassword(password);
-         userService.updateUser(user,us.getIdClient());
+
+         this.updateUserPassword(us.getIdClient(),password);
 
         helper = new MimeMessageHelper(message, multipart, "utf-8");
         message.setContent("Your password AppStore has been changed", "text/html");

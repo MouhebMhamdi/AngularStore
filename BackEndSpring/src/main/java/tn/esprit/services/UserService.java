@@ -18,10 +18,11 @@ public interface UserService extends UserDetailsService {
     List<User> chercherUser();
 
     void  updateUser(User user, long id );
-
+    void updateUserPassword(String password,long id);
     User getUserByEmailAndPassword(String email,String Password);
 
     void addRoleToUser(String email,String role);
 
+  User getUserByIdClient(long id);
 
 }
