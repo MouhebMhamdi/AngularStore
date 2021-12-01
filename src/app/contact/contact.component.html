@@ -6,7 +6,14 @@
           <div class="form-main">
             <div class="title">
               <h4>Get in touch</h4>
-              <h3>Write us a message</h3>
+              <div class="d-flex flex-row">
+                <h3>Write us a message</h3> 
+                <div class="load pt-2" *ngIf="loading" >
+               
+                      <div class="spinner"></div>
+                </div>
+              
+               </div>
             </div>
             <form class="form"  [formGroup]="form" (ngSubmit)="onSubmit()">
               <div class="row">
@@ -14,7 +21,7 @@
                   <div class="form-group">
                     <label>Your Name<span>*</span></label>
                     <input type="text" placeholder=""  formControlName="name" class="form-control"
-                           [ngClass]="{ 'is-invalid': submitted && form.controls.name.errors }">
+                           [ngClass]="{ 'is-invalid': submitted && form.controls.name.errors }" [(ngModel)]="contactUs.name">
                     <div *ngIf="form.controls['name'].hasError('required')" class="invalid-feedback">
                       <div>Name is required</div>
                     </div>
@@ -27,7 +34,7 @@
                   <div class="form-group">
                     <label>Your Subjects<span>*</span></label>
                     <input type="text" placeholder="" formControlName="subject" class="form-control"
-                           [ngClass]="{ 'is-invalid': submitted && form.controls.subject.errors }">
+                           [ngClass]="{ 'is-invalid': submitted && form.controls.subject.errors }" [(ngModel)]="contactUs.subject">
                     <div *ngIf="form.controls['subject'].hasError('required')" class="invalid-feedback">
                       <div>Subject is required</div>
                     </div>
@@ -37,7 +44,7 @@
                   <div class="form-group">
                     <label>Your Email<span>*</span></label>
                     <input type="email" placeholder="" formControlName="email" class="form-control"
-                           [ngClass]="{ 'is-invalid': submitted && form.controls.email.errors }">
+                           [ngClass]="{ 'is-invalid': submitted && form.controls.email.errors }" [(ngModel)]="contactUs.email">
                     <div *ngIf="form.controls['email'].hasError('required')" class="invalid-feedback">
                       <div>Email is required</div>
                     </div>
@@ -50,7 +57,7 @@
                   <div class="form-group">
                     <label>Your Phone<span>*</span></label>
                     <input  type="text" placeholder="" formControlName="phone" class="form-control"
-                            [ngClass]="{ 'is-invalid': submitted && form.controls.phone.errors }">
+                            [ngClass]="{ 'is-invalid': submitted && form.controls.phone.errors }" [(ngModel)]="contactUs.phone">
                     <div *ngIf="form.controls['phone'].hasError('required')" class="invalid-feedback">
                       <div>Phone Number is required</div>
                     </div>
@@ -63,7 +70,7 @@
                   <div class="form-group message">
                     <label>Your message<span>*</span></label>
                     <textarea placeholder="" formControlName="message" class="form-control"
-                              [ngClass]="{ 'is-invalid': submitted && form.controls.message.errors }"></textarea>
+                              [ngClass]="{ 'is-invalid': submitted && form.controls.message.errors }" [(ngModel)]="contactUs.message"></textarea>
                     <div *ngIf="form.controls['message'].hasError('required')" class="invalid-feedback">
                       <div>Message is required</div>
                     </div>

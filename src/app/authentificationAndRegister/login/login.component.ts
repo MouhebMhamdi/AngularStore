@@ -36,9 +36,10 @@ export class LoginComponent implements OnInit {
   myFormReset:FormGroup;
   msg: string;
   loading$: Observable<boolean> = of(false);
- 
+  submitted = false;
+
   loading = false
-  constructor(private spinner: NgxSpinnerService,private resetPasswordService:ResetPasswordService,private userService:UserService,private authService:AuthentificationService, /*private data: SharedDataService,*/ private router:Router, private f: FormBuilder,private toastr: ToastrService,private modalService: NgbModal)  { }
+  constructor(private formBuilder: FormBuilder,private spinner: NgxSpinnerService,private resetPasswordService:ResetPasswordService,private userService:UserService,private authService:AuthentificationService, /*private data: SharedDataService,*/ private router:Router, private f: FormBuilder,private toastr: ToastrService,private modalService: NgbModal)  { }
   
   
   ngOnInit(): void {
@@ -47,19 +48,54 @@ export class LoginComponent implements OnInit {
       if(localStorage.getItem('email')!=null){
         this.router.navigate([('/')])
       }
-    this.myForm= new FormGroup({
-      'email': new FormControl('',[Validators.required,
-        Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-      'password': new FormControl('', Validators.required),
-      'address': new FormGroup({
-        'street number': new FormControl(),
-        
+    this.myForm=  this.formBuilder.group(
+      {
+        email: ['',[
+          Validators.required,
+          Validators.email]
+        ],
+        password: ['',[
+          Validators.required
+        ]]
 
-      })
+      });
+    this.myFormReset=this.formBuilder.group(
+      {
+        email: ['',[
+          Validators.required,
+          Validators.email]
+          
+        ]});
+
+    this.myForm1=this.formBuilder.group({
+          email: ['',[
+                Validators.required,
+                Validators.email]],
+
+          password: ['',[
+                Validators.required]],
+
+          nom: ['',[
+                Validators.required], Validators.minLength(6),
+                Validators.maxLength(20)],
+        
+          prenom: ['',[
+                Validators.required], Validators.minLength(6),
+                Validators.maxLength(20)],
+
+          dateNaissance: ['',[
+                Validators.required]],
+
+          picture: ['',[
+                Validators.required]],
+          
+          job: ['',[
+                Validators.required]],
+
+          profession: ['',[
+                Validators.required]],
     });
-    this.myFormReset=new FormGroup({
-      'email':new FormControl('')
-    })
+      /*
     this.myForm1= new FormGroup({
       'email': new FormControl(''),
       'password': new FormControl(''),
@@ -70,7 +106,7 @@ export class LoginComponent implements OnInit {
       'job':new FormControl(''),
       'profession':new FormControl('')
 
-    })
+    })*/
   }
   tab:any=[];
   roles:any=[];
@@ -79,6 +115,10 @@ export class LoginComponent implements OnInit {
     this.selectedFile = event.target.files[0];
   }
   sendEmail(){
+    this.submitted = true;
+    if (this.myFormReset.invalid) {
+      return;
+    }
     this.loading = true
     this.resetPasswordService.sendEmail(this.users.email).pipe(
       finalize(() => this.loading = false)
@@ -120,6 +160,10 @@ verifUserRoleConncet(email:string){
   )
 }
   login(myForm:FormGroup){
+    this.submitted = true;
+    if (this.myForm.invalid) {
+      return;
+    }
     this.authService.login(myForm.controls['email'].value,myForm.controls['password'].value).subscribe((user:any )=>{
       this.tab=user;
       
@@ -136,7 +180,10 @@ verifUserRoleConncet(email:string){
     )
   }
 addUser(){
-
+  this.submitted = true;
+    if (this.myForm1.invalid) {
+      return;
+    }
   console.log(this.users);
   this.userService.addUser(this.users).subscribe(
     ()=>this.addRoleToUser()

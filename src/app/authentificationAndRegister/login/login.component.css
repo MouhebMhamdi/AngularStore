@@ -18,7 +18,9 @@
     border-top-color: #F7941D;
     animation: spinner .6s linear infinite;
   }
-
+.bi{
+font-size: 100px;
+}
 h1{
     text-align: center;
     color: chocolate;
