@@ -21,10 +21,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LogoutComponent } from './authentificationAndRegister/logout/logout.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ResetPasswordComponent } from './authentificationAndRegister/reset-password/reset-password.component';
+
 import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './app-shared/not-found/not-found.component';
 import { AppSharedComponent } from './app-shared/app-shared.component';
 import { ContactComponent } from './contact/contact.component';
+
+import { ProfileComponent } from './app-user/profile/profile.component';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +48,8 @@ import { ContactComponent } from './contact/contact.component';
     AppSharedComponent,
     LoginComponent,
     LogoutComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -17,25 +17,30 @@ import java.util.Set;
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class User implements Serializable {
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	
+
 	private long idClient ;
 	private String  Nom ;
 	private String Prenom ;
-	
+
 	@Temporal(value=TemporalType.TIMESTAMP)
 	private Date DateNaissance ;
 
 	private String email ;
 	private String password;
-	
+	private String rue;
+  private String city;
+  private String State;
+  private int zip;
+  private String tel;
+  private String street;
 	@Enumerated(EnumType.ORDINAL)
 	private CategorieClient categorie;
-	
+
 	@Enumerated(EnumType.ORDINAL)
 	private Profession Proffesion;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy= "user")
@@ -51,7 +56,7 @@ public class User implements Serializable {
 	private Collection<Role> roles;
 
 
-	
-	
-	
+
+
+
 }

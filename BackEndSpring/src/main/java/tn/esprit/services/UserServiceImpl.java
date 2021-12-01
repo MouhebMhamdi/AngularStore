@@ -100,7 +100,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public void updateUser(User user, long id) {
 
         User cl=UserRepositorie.findById(id).get();
-
+        if(user.getNom()!=null) cl.setNom(user.getNom());
+        if(user.getPrenom()!=null) cl.setPrenom(user.getPrenom());
         if(user.getDateNaissance()!=null)
         cl.setDateNaissance(user.getDateNaissance());
 
@@ -111,21 +112,34 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
         cl.setProffesion(user.getProffesion());
 
-        if(user.getPassword()!=null)
-        cl.setPassword(passwordEncoder.encode(user.getPassword()));
-
         if(user.getEmail()!=null)
         cl.setEmail(user.getEmail());
 
         if(user.getCategorie()!=null)
             cl.setCategorie(user.getCategorie());
 
+        if(user.getCity()!=null)cl.setCity(user.getCity());
 
+        if(user.getState()!=null)cl.setState(user.getState());
+
+        if(user.getZip()!=0)cl.setZip(user.getZip());
+
+        if(user.getRue()!=null)cl.setRue(user.getRue());
+
+        if(user.getTel()!=null)cl.setTel(user.getTel());
+        if(user.getStreet()!=null)cl.setStreet(user.getStreet());
         UserRepositorie.save(cl);
 
     }
 
-    @Override
+  @Override
+  public void updateUserPassword(String password, long id) {
+    User user=UserRepositorie.findById(id).get();
+    if(password!=null) user.setPassword(passwordEncoder.encode(password));
+    UserRepositorie.save(user);
+  }
+
+  @Override
     public User getUserByEmailAndPassword(String email, String Password) {
         return UserRepositorie.getUserByEmailAndPassword(email,Password);
     }
@@ -139,6 +153,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
        us.getRoles().add(ro);
     }
 
+  @Override
+  public User getUserByIdClient(long id) {
+    return UserRepositorie.findById(id).get();
+  }
 
 
 }
