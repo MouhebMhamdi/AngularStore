@@ -53,3 +53,12 @@
     border: 0;
     margin-bottom: 1rem;
 }
+
+.page-menu-item{
+    text-align: center;
+    padding-top: 8px;
+}
+.page-menu-item:hover{
+    background-color:rgb(255, 165, 0,0.5);
+    transition: 0.5s;
+}
