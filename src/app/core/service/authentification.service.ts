@@ -30,6 +30,12 @@ export class AuthentificationService {
         this.email = email;
         this.password = password;
          this.tab=res;
+         this.tab.roles.forEach((element:any) => {
+           
+          if(element.role!="USER") throw new Error("Not a User");
+          ;
+        });
+        
         localStorage.setItem("data",this.tab['idClient']);
         
        this.curUser.next(this.tab);
@@ -61,7 +67,10 @@ export class AuthentificationService {
 }
    getUserConnect(email: string) {
     console.log(email+" ")
-    return this.http.get(this.url+'/user/getUserByEmail/'+email).pipe(map(data => {}))
+    return this.http.get(this.url+'/user/getUserByEmail/'+email).pipe(map(data => {
+      this.tab=data;
+      this.curUser.next(this.tab);
+    }))
   }
 
   createBasicAuthToken(email: string, password: string) {

@@ -11,18 +11,18 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Entity 
+@Entity
 public class Stock implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long idStock;
 	private int qte;
 	private int qtemin ;
-	private String libellStock ;
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="stock")
 	private Set<Produit> produits;
-	
-	
 
-	
+
+
+
 }

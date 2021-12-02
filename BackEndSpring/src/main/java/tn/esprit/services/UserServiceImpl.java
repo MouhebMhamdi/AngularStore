@@ -115,9 +115,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         if(user.getEmail()!=null)
         cl.setEmail(user.getEmail());
 
-        if(user.getCategorie()!=null)
-            cl.setCategorie(user.getCategorie());
-
         if(user.getCity()!=null)cl.setCity(user.getCity());
 
         if(user.getState()!=null)cl.setState(user.getState());

@@ -50,7 +50,7 @@ public class StockServiceImpl implements stockService{
     public void updateClient(Stock stock, long id) {
         Stock st=stockRepository.findById(id).get();
 
-        if(stock.getLibellStock()!=null) st.setLibellStock(stock.getLibellStock());
+
 
         if(stock.getQte()!=0) st.setQte(stock.getQte());
 

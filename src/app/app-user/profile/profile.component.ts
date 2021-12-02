@@ -13,7 +13,7 @@ import { UserService } from 'src/app/core/service/user.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  users: Users;
+   users: Users;
   myForm: FormGroup;
 
   constructor(private router:Router, private authService:AuthentificationService,private userService:UserService,private toastr: ToastrService) { }
@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit {
     if(localStorage.getItem('email')==null){
       this.router.navigate([('/')])
     }
+    this.verifUserRoleConncet(String(localStorage.getItem("email")))
     this.users=new Users();
       
     this.myForm= new FormGroup({
@@ -34,7 +35,7 @@ export class ProfileComponent implements OnInit {
       'state':new FormControl(''),
       'zip':new FormControl('')
     })
-
+    console.log(this.verifUserRoleConncet(String(localStorage.getItem("email"))))
     this.authService.sharedUser.subscribe(
       (data:Users)=>
       {this.users=data},
@@ -42,8 +43,20 @@ export class ProfileComponent implements OnInit {
       ()=>{this.users = new Users()}
     )
 
-    console.log(this.users)
+
+   
   }
+  verifUserRoleConncet(email:string){
+ 
+  
+    this.authService.getUserConnect(String(email)).subscribe(user =>{
+    
+     console.log(user+"ezeeze") 
+   
+   
+}
+)
+}
 redirect(){
   this.router.navigate(['/']);
 }

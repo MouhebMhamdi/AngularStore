@@ -12,74 +12,51 @@ import java.util.Set;
 
 
 @RestController
+@RequestMapping("/api/produit")
 public class ProduitController {
 @Autowired
-ProduitServiceImpl ProduitController;
-@Autowired
-FourniseurRepository fourniseurRepository;
-
-@Autowired
-ProduitServiceImpl produitService;
-
-@Autowired
-detailProduitImpl detailProduitService;
-
-
+ProduitServiceImpl  produitService;
 
 @Autowired
 RayonServiceImp rayonServiceImp;
 
 @Autowired
-DetailFactureImpl detailFactureImpl;
-
-
-@Autowired
-StockServiceImpl stockServiceImpl;
-
-@Autowired
-FournisseurServiceImpl fournisseurService;
-
-@GetMapping("/get/{id}")
+StockServiceImpl stockService;
+@GetMapping("/getProductById/{id}")
 public Produit getproduitController(@PathVariable long id) {
-	return ProduitController.getProduitById(id);
-	
+	return produitService.getProduitById(id);
+
 }
 
-@PostMapping("/save")
+@PostMapping("/addProduct")
  public void addProduit(@RequestBody  Produit produit) {
-	 Set<Fournisseur> f = new HashSet<Fournisseur>();
-	for (Fournisseur fourni:produit.getFournisseurProduit()) {
-		Fournisseur fournisseur=fourniseurRepository.findById(fourni.getIdFournisseur()).get();
-		f.add(fournisseur);
-	}
-	//Fournisseur fournisseur=fourniseurRepository.findById(produit.getFournisseurProduit().).get();
-    //Set<Fournisseur> f = new HashSet<Fournisseur>();
-    //f.add(fournisseur);
-	
-	
-    Stock s=stockServiceImpl.getStockById(produit.getStock().getIdStock());
-    Rayon r=rayonServiceImp.getRayonById(produit.getRayon().getIdRayon());
-    DetailFacture d=detailFactureImpl.getDetailFacture(produit.getDetailFacture().getIdDetailFacture());
-    DetailProduit detailProduit=detailProduitService.getDetailProduitById(produit.getDetailProduit().getIdDetailProduit());
-	Produit p=new Produit();
-	p.setIdprixUnitaire(produit.getIdprixUnitaire());
-    p.setCode(produit.getCode());
-    p.setIdlibelle(produit.getIdlibelle());
-    
-    p.setRayon(r);
-    p.setDetailProduit(detailProduit);
-    p.setDetailFacture(d);
-    p.setStock(s);
-    p.setFournisseurProduit(f);
-    
-    ProduitController.addProduit(p);
-	
+  produitService.addProduit(produit);
 }
-	
-	
 
 
-	
+@PostMapping("/addRayonToProduit")
+  public void addRayonToProduit(@RequestBody Rayon rayon,@RequestParam long idProduct){
+  Produit produit=produitService.getProduitById(idProduct);
+
+  rayonServiceImp.addRayon(rayon);
+
+  produit.setRayon(rayon);
+  produitService.addProduit(produit);
+}
+
+
+@PostMapping("/addStockToProduct")
+  public  void addStockToProduct(@RequestBody Stock stock,@RequestParam long idProduct){
+  Produit produit=produitService.getProduitById(idProduct);
+  produit.setStock(stock);
+  stockService.addStock(stock);
+  produitService.addProduit(produit);
+}
+
+
+
+
+
 
 
 

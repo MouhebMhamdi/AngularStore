@@ -53,30 +53,26 @@
         </div>
         <div class="modal-body">
         
-        <form class="w-75 mx-auto mb-5" #f1="ngForm" [formGroup]="myForm1" (ngSubmit)="addUser()">
+        <form class="w-75 mx-auto mb-5"  [formGroup]="myForm1" (ngSubmit)="addUser()">
           
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
                 <label>First Name:</label>
-                <input type="text"  class="form-control"   formControlName="prenom" [(ngModel)]="users.prenom" [ngClass]="{ 'is-invalid': submitted && myForm1.controls.prenom.errors }">
+                <input  type="text" class="form-control" formControlName="prenom"  [(ngModel)]="users.prenom" [ngClass]="{ 'is-invalid': submitted && myForm1.controls.prenom.errors }">
+                
                 <div *ngIf="myForm1.controls['prenom'].hasError('required')" class="invalid-feedback">
                   <div>First Name is required</div>
-                </div>
-                <div *ngIf="myForm1.controls['prenom'].hasError('minlength')" class="invalid-feedback">
-                  <div>First Name length must be higher than 6</div>
                 </div>
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
                 <label>Last Name:</label>
-                <input  type="text" class="form-control" formControlName="nom" [(ngModel)]="users.nom" [ngClass]="{ 'is-invalid': submitted && myForm1.controls.nom.errors }">
+                <input  type="text" class="form-control" formControlName="nom"  [(ngModel)]="users.nom" [ngClass]="{ 'is-invalid': submitted && myForm1.controls.nom.errors }">
+               
                 <div *ngIf="myForm1.controls['nom'].hasError('required')" class="invalid-feedback">
-                  <div>Last Name is required</div>
-                </div>
-                <div *ngIf="myForm1.controls['nom'].hasError('minlength')" class="invalid-feedback">
-                  <div>Last Name length must be higher than 6</div>
+                  <div>Last  Name is required</div>
                 </div>
               </div>
             </div>
@@ -114,7 +110,7 @@
             <div class="col-sm-12">
               <div class="form-group">
                 <label>Picture:</label>
-                <input  type="file" class="form-control" name="picture" formControlName="picture"  (change)="onFileChanged($event)" [ngClass]="{ 'is-invalid': submitted && myForm1.controls.pucture.errors }">
+                <input  type="file" class="form-control" name="picture" formControlName="picture"  (change)="onFileChanged($event)">
                 <div *ngIf="myForm1.controls['picture'].hasError('required')" class="invalid-feedback">
                   <div>Picture is required</div>
                 </div>
@@ -123,7 +119,7 @@
             <div class="col-sm-12">
               <div class="form-group">
                 <label>Job:</label>
-                <select class="form-control" name="profession" formControlName="profession" [(ngModel)]="users.profession" [ngClass]="{ 'is-invalid': submitted && myForm1.controls.profession.errors }">
+                <select  class="form-control" name="profession" formControlName="profession" [(ngModel)]="users.profession" [ngClass]="{ 'is-invalid': submitted && myForm1.controls.profession.errors }">
                   <option ></option>
                   <option value="Docteur">Docteur</option>
                   <option value="Ingenieur">Ingenieur</option>
