@@ -38,11 +38,8 @@ public class User implements Serializable {
   private int zip;
   private String tel;
   private String street;
-	@Enumerated(EnumType.ORDINAL)
-	private CategorieClient categorie;
+	private String proffesion;
 
-	@Enumerated(EnumType.ORDINAL)
-	private Profession Proffesion;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy= "user")
 	private Set<Facture> factures;
 

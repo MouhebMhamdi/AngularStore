@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit,OnChanges {
   }
  
   ngOnInit(): void {
-    
+    this.verifUserRoleConncet(String(localStorage.getItem("email")))
     this.authService.sharedUser.subscribe(
       (data:Users)=>
       {this.users=data},
@@ -37,6 +37,17 @@ export class HeaderComponent implements OnInit,OnChanges {
     )
   
   }
+  verifUserRoleConncet(email:string){
+ 
+  
+    this.authService.getUserConnect(String(email)).subscribe(user =>{
+    
+     console.log(user+"ezeeze") 
+   
+   
+}
+)
+}
   logout(){
    this.authService.logOut();
    this.users=new Users();

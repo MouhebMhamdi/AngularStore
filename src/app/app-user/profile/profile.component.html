@@ -41,8 +41,9 @@
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                     <div class="form-group">
-                        <label for="eMail">Date of Birthday</label>
-                        <input type="date" class="form-control" id="date" asp-for="MyDate" datetime="yyyy-MM-dd " asp-format="{0:yyyy-MM-dd}" [(ngModel)]="users.dateNaissance " formControlName="dateNaissance">
+                        <label for="eMail">Date of Birthday : {{users.dateNaissance |date:'dd-MM-yyyy'}}</label>
+                        
+                        <input type="date" class="form-control" id="date" asp-for="MyDate"   [(ngModel)]="users.dateNaissance" formControlName="dateNaissance">
                     </div>
                 </div>
                 

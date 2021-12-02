@@ -4,9 +4,7 @@ package tn.esprit.spring;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import tn.esprit.model.CategorieClient;
 import tn.esprit.model.User;
-import tn.esprit.model.Profession;
 import tn.esprit.services.UserServiceImpl;
 
 import java.text.SimpleDateFormat;
@@ -32,12 +30,12 @@ public class UserTest {
             user.setNom("RJAB");
             user.setPrenom("MONJI");
             user.setPassword("1234");
-            user.setCategorie(CategorieClient.Premium);
-            user.setProffesion(Profession.Etudiant);
+
+
             user.setDateNaissance(date);
             clientServiceImpl.ajouterUser(user);
-            
-     
+
+
             // clientServiceImpl.supprimerClient(1);
         }catch (Exception e){
 
@@ -45,8 +43,8 @@ public class UserTest {
             System.out.println(e.getMessage());
         }
 
-        
-        
+
+
 
     }
 }

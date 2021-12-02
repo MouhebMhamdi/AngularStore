@@ -39,12 +39,16 @@ export class LoginComponent implements OnInit {
   submitted = false;
 
   loading = false
+
+
+  
   constructor(private formBuilder: FormBuilder,private spinner: NgxSpinnerService,private resetPasswordService:ResetPasswordService,private userService:UserService,private authService:AuthentificationService, /*private data: SharedDataService,*/ private router:Router, private f: FormBuilder,private toastr: ToastrService,private modalService: NgbModal)  { }
   
   
   ngOnInit(): void {
-   
+  
     this.users=new Users();
+
       if(localStorage.getItem('email')!=null){
         this.router.navigate([('/')])
       }
@@ -67,7 +71,15 @@ export class LoginComponent implements OnInit {
           
         ]});
 
-    this.myForm1=this.formBuilder.group({
+  /*  this.myForm1=this.formBuilder.group({
+          nom: ['',[
+            Validators.required], Validators.minLength(6),
+            Validators.maxLength(20)],
+
+          prenom: ['',[
+                Validators.required], Validators.minLength(6),
+                Validators.maxLength(20)],
+
           email: ['',[
                 Validators.required,
                 Validators.email]],
@@ -75,38 +87,29 @@ export class LoginComponent implements OnInit {
           password: ['',[
                 Validators.required]],
 
-          nom: ['',[
-                Validators.required], Validators.minLength(6),
-                Validators.maxLength(20)],
-        
-          prenom: ['',[
-                Validators.required], Validators.minLength(6),
-                Validators.maxLength(20)],
-
+         
           dateNaissance: ['',[
                 Validators.required]],
 
           picture: ['',[
                 Validators.required]],
-          
-          job: ['',[
-                Validators.required]],
+        
 
           profession: ['',[
                 Validators.required]],
-    });
-      /*
+    });*/
+      
     this.myForm1= new FormGroup({
-      'email': new FormControl(''),
-      'password': new FormControl(''),
-      'nom':new FormControl(''),
-      'prenom':new FormControl(''),
-      'dateNaissance':new FormControl(''),
+      'email': new FormControl('',[Validators.required,Validators.email]),
+      'password': new FormControl('',[Validators.required]),
+      'nom':new FormControl('',[Validators.required,Validators.minLength(6),Validators.maxLength(20)]),
+      'prenom':new FormControl('',[Validators.required,Validators.minLength(6),Validators.maxLength(20)]),
+      'dateNaissance':new FormControl('',Validators.required),
       'picture':new FormControl(''),
-      'job':new FormControl(''),
-      'profession':new FormControl('')
+      
+      'profession':new FormControl('',Validators.required )
 
-    })*/
+    })
   }
   tab:any=[];
   roles:any=[];
@@ -164,9 +167,10 @@ verifUserRoleConncet(email:string){
     if (this.myForm.invalid) {
       return;
     }
+
     this.authService.login(myForm.controls['email'].value,myForm.controls['password'].value).subscribe((user:any )=>{
       this.tab=user;
-      
+     
       this.successMessage="Login Successful";
       
       this.verifUserRoleConncet(myForm.controls['email'].value);
@@ -182,7 +186,7 @@ verifUserRoleConncet(email:string){
 addUser(){
   this.submitted = true;
     if (this.myForm1.invalid) {
-      return;
+     return;
     }
   console.log(this.users);
   this.userService.addUser(this.users).subscribe(

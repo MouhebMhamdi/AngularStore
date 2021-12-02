@@ -20,11 +20,6 @@ public class ProduitTest {
     ProduitServiceImpl produitService;
 
     @Autowired
-    detailProduitImpl detailProduitService;
-
-
-
-    @Autowired
     RayonServiceImp rayonServiceImp;
 
     @Autowired
@@ -46,11 +41,11 @@ public class ProduitTest {
 
 
         /*Add Detail product*/
-        DetailProduit detailProduit=detailProduitService.getDetailProduitById(3);
+
 
         //*******************************************************************
         //Add Rayon =================
-       
+
         Rayon r=rayonServiceImp.getRayonById(6);
 
         //================================================
@@ -66,12 +61,9 @@ public class ProduitTest {
         Fournisseur fournisseur=fourniseurRepository.findById(5L).get();
         Set<Fournisseur> f = new HashSet<Fournisseur>();
         f.add(fournisseur);
-        p.setIdprixUnitaire(2);
-        p.setCode("6963");
-        p.setIdlibelle("aliii");
-        p.setIdprixUnitaire(100);
+
         p.setRayon(r);
-        p.setDetailProduit(detailProduit);
+
         p.setDetailFacture(d);
         p.setStock(s);
         p.setFournisseurProduit(f);

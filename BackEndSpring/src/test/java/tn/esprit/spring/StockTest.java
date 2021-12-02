@@ -15,7 +15,7 @@ public class StockTest {
         Stock s=new Stock();
         s.setQtemin(50);
         s.setQtemin(250);
-        s.setLibellStock("Vetement");
+
         stockServiceImpl.addStock(s);
     }
 }
