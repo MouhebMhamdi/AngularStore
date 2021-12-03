@@ -18,8 +18,8 @@ import java.util.List;
 @RequestMapping("/api/addtocart")
 public class AddToCartController {
 
-  @Autowired
-CarteServiceImpl carteService;
+  //@Autowired
+//CarteServiceImpl carteService;
 
 
 

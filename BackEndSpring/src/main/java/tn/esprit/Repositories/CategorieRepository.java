@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 import tn.esprit.model.CategorieClient;
 import tn.esprit.model.Categories;
 
-@Repository
-public interface CategorieRepository extends JpaRepository<Categories,Long> {
-  @Query("SELECT c FROM Categories c WHERE c.Name=:name")
-  Categories getCategoriesByName(String name);
+//@Repository
+public interface CategorieRepository /*extends JpaRepository<Categories,Long>*/ {
+  /*@Query("SELECT c FROM Categories c WHERE c.Name=:name")
+  Categories getCategoriesByName(String name);*/
 }

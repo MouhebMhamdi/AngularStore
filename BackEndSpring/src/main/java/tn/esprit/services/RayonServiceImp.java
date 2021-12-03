@@ -52,13 +52,13 @@ public class RayonServiceImp implements RayonService{
 	@Override
 	public void DeleteRayon(long id) {
 		rayonRepository.deleteById(id);
-		
+
 	}
 
 	@Override
 	public void DeleteAllRayon() {
 		rayonRepository.deleteAll();
-		
+
 	}
 
 	@Override
@@ -67,9 +67,9 @@ public class RayonServiceImp implements RayonService{
 			if(rayon.getCode()!=null) R1.setCode(rayon.getCode());
 			if(rayon.getLibelle()!=null) R1.setLibelle(rayon.getLibelle());
 			if(rayon.getProduits()!=null) R1.setProduits(rayon.getProduits());
-			
+
 			rayonRepository.save(rayon);
-		
+
 	}
 
 	@Override
@@ -86,9 +86,9 @@ public class RayonServiceImp implements RayonService{
 		Fournisseur F1 = fournisseurRepository.findById(fournisseurId).get();
 		Set<Fournisseur> F = new HashSet<>();
 		F.add(F1);
-		P1.setFournisseurProduit(F);
+		P1.setFournisseurs(F);
 		produitRepository.save(P1);
 	}
-	
+
 
 }

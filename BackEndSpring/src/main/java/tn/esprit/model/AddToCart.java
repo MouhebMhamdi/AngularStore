@@ -2,7 +2,7 @@ package tn.esprit.model;
 
 import javax.persistence.*;
 
-@Entity
+//@Entity
 @Table(name = "add_to_cart")
 public class AddToCart {
   @Id
