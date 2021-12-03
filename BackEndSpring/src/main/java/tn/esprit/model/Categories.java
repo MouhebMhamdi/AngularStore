@@ -10,8 +10,6 @@ import java.util.Collection;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
-@Entity
 public class Categories {
 
   @Id

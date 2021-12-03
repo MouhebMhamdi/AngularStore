@@ -12,8 +12,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { LoginComponent } from './authentificationAndRegister/login/login.component';
-import { MainProductsComponent } from './app-product/main-products/main-products.component';
-import { FormProductsComponent } from './app-product/form-products/form-products.component';
 import { AppProductComponent } from './app-product/app-product.component';
 import { ProductsComponent } from './app-product/products/products.component';
 import { AppCartComponent } from './app-cart/app-cart.component';
@@ -28,6 +26,7 @@ import { AppSharedComponent } from './app-shared/app-shared.component';
 import { ContactComponent } from './contact/contact.component';
 
 import { ProfileComponent } from './app-user/profile/profile.component';
+import { DetailProductComponent } from './app-product/detail-product/detail-product.component';
 
 
 @NgModule({
@@ -43,13 +42,12 @@ import { ProfileComponent } from './app-user/profile/profile.component';
     AppCartComponent,
     ProductsComponent,
     AppProductComponent,
-    FormProductsComponent,
-    MainProductsComponent,
     AppSharedComponent,
     LoginComponent,
     LogoutComponent,
     ResetPasswordComponent,
-    ProfileComponent
+    ProfileComponent,
+    DetailProductComponent
   ],
   imports: [
     BrowserModule,

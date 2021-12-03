@@ -39,7 +39,7 @@ public class FournisseurServiceImpl implements FournisseurService{
     public void DeleteFournisseur(long id) {
     	fourniseurRepository.deleteById(id);
     }
-    
+
     @Override
     public void updateFournisseur(Fournisseur fournisseur, long id) {
 
@@ -50,7 +50,7 @@ public class FournisseurServiceImpl implements FournisseurService{
 
         fourniseurRepository.save(fournisseur);
     }
-    
+
     @Override
     public void DeleteAllFournisseur() {
     	fourniseurRepository.deleteAll();
@@ -62,10 +62,10 @@ public class FournisseurServiceImpl implements FournisseurService{
         Fournisseur four=fourniseurRepository.findById(fournisseurId).get();
         Set<Fournisseur> f=new HashSet<>();
         f.add(four);
-        Produit p=produitService.getProduitById(produitId);
-        p.setFournisseurProduit(f);
+        Produit p= produitService.retrieveProduit(produitId);
+        p.setFournisseurs(f);
 
-        produitService.addProduit(p);
+    //    produitService.addProduit(p);
 
 
     }

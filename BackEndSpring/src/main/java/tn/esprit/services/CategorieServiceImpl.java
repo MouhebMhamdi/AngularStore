@@ -7,42 +7,42 @@ import tn.esprit.model.Categories;
 
 import java.util.List;
 
-@Service
+//@Service
 public class CategorieServiceImpl implements CategorieService{
   @Autowired
   private CategorieRepository categorieRepository;
 
-  @Override
+  /*@Override
   public List<Categories> getAllCategories() {
     return categorieRepository.findAll();
-  }
+  }*/
 
-  @Override
+ /* @Override
   public Categories getCategorieByName(String name) {
     return categorieRepository.getCategoriesByName(name);
-  }
+  }*/
 
-  @Override
+ /* @Override
   public void addCategorie(String catName) {
 
     categorieRepository.save(new Categories(catName));
-  }
+  }*/
 
-  @Override
+ /* @Override
   public void deleteCategorieByName(String catName) {
     categorieRepository.delete(categorieRepository.getCategoriesByName(catName));
-  }
+  }*/
 
-  @Override
+ /* @Override
   public void deleteCategorieById(long id) {
       categorieRepository.delete(categorieRepository.findById(id).get());
 
-  }
+  }*/
 
-  @Override
+ /* @Override
   public void updateCategorie(String newCatName, long id) {
       Categories categories=categorieRepository.findById(id).get();
       categories.setName(newCatName);
       categorieRepository.save(categories);
-  }
+  }*/
 }
