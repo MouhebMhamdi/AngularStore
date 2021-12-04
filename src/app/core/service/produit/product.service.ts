@@ -3,6 +3,7 @@ import {environment} from "../../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {catchError} from "rxjs/operators";
 import {Observable, throwError} from "rxjs";
+import {Product} from "../../model/product";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,13 @@ export class ProductService {
   url = "http://localhost:8081/produit/"
   constructor(private http: HttpClient) {
   }
-  getAllProducts() : Observable<any> {
-    return this.http.get(this.url + 'getAllProduits');
+  getAllProducts() : Observable<Product[]> {
+    return this.http.get<Product[]>(this.url + 'getAllProduits');
   }
+
+  getProduct(id: number): Observable<Product> {
+    return this.http.get<Product>(this.url+'getProduit/'+id);
+  }
+
+
 }
