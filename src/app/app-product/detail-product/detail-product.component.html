@@ -26,9 +26,9 @@
 
             <div class="col-12 mb-0">
               <figure class="view overlay rounded z-depth-1 main-img" style="max-height: 450px;">
-                <a href="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
+                <a href="assets/img/products/{{product.image}}"
                    data-size="710x823">
-                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
+                  <img src="assets/img/products/{{product.image}}"
                        class="img-fluid z-depth-1" style="margin-top: -90px;">
                 </a>
               </figure>
@@ -93,7 +93,7 @@
       </div>
       <div class="col-md-6">
 <br>
-        <h5>Blue denim shirt</h5>
+        <h5>{{product.libelle}}</h5>
         <p class="mb-2 text-muted text-uppercase small">Shirts</p>
         <ul class="rating">
           <li>
@@ -112,7 +112,7 @@
             <i class="fa fa-star fa-sm text-primary"></i>
           </li>
         </ul>
-        <p><span class="mr-1"><strong>$17.99</strong></span></p>
+        <p><span class="mr-1"><strong>${{product.prixUnitaire}}</strong></span></p>
         <p class="pt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, sapiente illo. Sit
           error voluptas repellat rerum quidem, soluta enim perferendis voluptates laboriosam. </p>
         <br>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Product} from "../../core/model/product";
 import {Router} from "@angular/router";
 import {ProductService} from "../../core/service/produit/product.service";
+import {stringify} from "@angular/compiler/src/util";
 
 @Component({
   selector: 'app-products',
@@ -24,6 +25,7 @@ export class ProductsComponent implements OnInit {
     this.productService.getAllProducts().subscribe(data => {
       this.products = data;
     });
-
   }
+
+
 }
