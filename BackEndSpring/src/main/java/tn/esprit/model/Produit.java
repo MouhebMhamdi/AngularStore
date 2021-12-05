@@ -13,6 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 @ToString
 @Entity
+@Table(name="produit")
 public class Produit implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

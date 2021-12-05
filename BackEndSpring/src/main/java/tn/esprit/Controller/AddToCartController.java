@@ -3,9 +3,7 @@ package tn.esprit.Controller;
 import io.swagger.v3.oas.models.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tn.esprit.JWTConfiguration.ShoppingConfiguration;
 import tn.esprit.model.AddToCart;
 import tn.esprit.services.CartService;
@@ -19,40 +17,78 @@ import java.util.List;
 public class AddToCartController {
 
   @Autowired
-CarteServiceImpl carteService;
+CartService carteService;
 
 
 
-  /*@RequestMapping("addproduct")
+  @PostMapping("addproduct")
   public ResponseEntity<?> addCartwithProduct(@RequestBody HashMap<String,String> addCartRequest) {
     try {
-      String keys[] = {"productId","userId","qty","price"};
+      String keys[] = {"idProduit","userId","qty","price"};
       if(ShoppingConfiguration.validationwithHashmap(keys, addCartRequest)) {
 
       }
-      long productId = Long.parseLong(addCartRequest.get("productId"));
+      long idProduit = Long.parseLong(addCartRequest.get("idProduit"));
       long userId =  Long.parseLong(addCartRequest.get("userId"));
       int qty =  Integer.parseInt(addCartRequest.get("qty"));
       double price = Double.parseDouble(addCartRequest.get("price"));
-     // List<AddToCart> obj = carteService.addCartByUserAndProductId(productId,userId,qty);
+      List<AddToCart> obj = carteService.addCartByUserAndProductId(idProduit,userId,qty,price);
       return ResponseEntity.ok(obj);
     } catch (Exception e) {
       e.printStackTrace();
-      return ResponseEntity.badRequest().body(new ApiResponse(e.getMessage(), ""));
+      return ResponseEntity.badRequest().body("a");
     }
 
-  }*/
+  }
 
-  /*@RequestMapping("removeproductfromcart")
-  public ResponseEntity<?>RemoveCartWithProductId(@RequestBody HashMap<String,String> removeCartRequest){
-   removeCartRequest.get("");
+
+  @PostMapping("updateqtycart")
+  public ResponseEntity<?> updateQuantityForCart(@RequestBody HashMap<String,String> addCartRequest) {
+    try {
+      String keys[] = {"cartId","userId","qty","price"};// les donneés hedhouma mouch normalemnt lezm njibhom mel front ?
+      if(ShoppingConfiguration.validationwithHashmap(keys, addCartRequest)) {
+
+      }
+      long cartId = Long.parseLong(addCartRequest.get("cartId"));
+      long userId =  Long.parseLong(addCartRequest.get("userId"));
+      int qty =  Integer.parseInt(addCartRequest.get("qty"));
+      double price = Double.parseDouble(addCartRequest.get("price"));
+      carteService.UpdateQuantityByCartId(cartId,price,qty);
+      List<AddToCart> obj = carteService.getCartByUserId(userId);
+      return ResponseEntity.ok(obj);
+    } catch (Exception e) {
+      e.printStackTrace();
+      return ResponseEntity.badRequest().body("a");
+    }
 
   }
-*/
- /* @RequestMapping("getcartbyuserid")
-  public ResponseEntity<?>getCartByUserId(@RequestBody HashMap<String,String> getCartRequest){
-    getCartRequest.get("");
 
-  }*/
+
+  @PostMapping("removeproductfromcart")
+  public ResponseEntity<?>RemoveCartWithProductId(@RequestBody HashMap<String,String> removeCartRequest){
+    try {
+      String keys[] = {"userId","cartId"};
+      if(ShoppingConfiguration.validationwithHashmap(keys, removeCartRequest)) {
+      }
+      List<AddToCart> obj=carteService.removeCartByUserId(Long.parseLong(removeCartRequest.get("cartId")),Long.parseLong(removeCartRequest.get("userId")));
+      return ResponseEntity.ok(obj);
+    }catch(Exception e) {
+      return ResponseEntity.badRequest().body("");
+    }
+  }
+
+  @RequestMapping("getcartbyuserid")//lena maamlch POST 3awadhha bel getCartRequest ??
+  public ResponseEntity<?>getCartByUserId(@RequestBody HashMap<String,String> getCartRequest){
+    try {
+      String keys[] = {"userId"};
+      if(ShoppingConfiguration.validationwithHashmap(keys, getCartRequest)) {
+      }
+      List<AddToCart> obj=carteService.getCartByUserId(Long.parseLong( getCartRequest.get("userId")));
+      //chneya el parsLong
+      return ResponseEntity.ok(obj);//hedhi zeda
+    }catch(Exception e) {
+      return ResponseEntity.badRequest().body("");
+    }
+  }
 
 }
