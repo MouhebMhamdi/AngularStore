@@ -94,34 +94,32 @@
       <div class="col-md-6">
 <br>
         <h5>{{product.libelle}}</h5>
-        <p class="mb-2 text-muted text-uppercase small">Shirts</p>
-        <ul class="rating">
-          <li>
-            <i class="fa fa-star checked fa-sm text-primary" ></i>
-          </li>
-          <li>
-            <i class="fa fa-star fa-sm text-primary"></i>
-          </li>
-          <li>
-            <i class="fa fa-star fa-sm text-primary"></i>
-          </li>
-          <li>
-            <i class="fa fa-star fa-sm text-primary"></i>
-          </li>
-          <li>
-            <i class="fa fa-star fa-sm text-primary"></i>
-          </li>
-        </ul>
+        <p class="mb-2 text-muted text-uppercase small">{{product.subCategory.category.nomCategory}}</p>
+        <p class="rating" >
+          <!-- 1 star  -->
+          <i [class]="(product.review == 0) ? 'far fa-star fa-sm text-primary' : (product.review > 0 && product.review < 1) ? 'fas fa-star-half-alt fa-sm text-primary' : 'fas fa-star fa-sm text-primary'"></i>
+
+          <!-- 2 star  -->
+          <i [class]="(product.review > 1 && product.review < 2) ? 'fas fa-star-half-alt fa-sm text-primary' : (product.review >= 2) ? 'fas fa-star fa-sm text-primary' : 'far fa-star fa-sm text-primary'"></i>
+
+          <!-- 3 star  -->
+          <i [class]="(product.review > 2 && product.review < 3) ? 'fas fa-star-half-alt fa-sm text-primary' : (product.review >= 3) ? 'fas fa-star fa-sm text-primary' : 'far fa-star fa-sm text-primary'"></i>
+
+          <!-- 4 star  -->
+          <i [class]="(product.review > 3 && product.review < 4) ? 'fas fa-star-half-alt fa-sm text-primary' : (product.review >= 4) ? 'fas fa-star fa-sm text-primary' : 'far fa-star fa-sm text-primary'"></i>
+
+          <!-- 5 star  -->
+          <i [class]="(product.review> 4 && product.review < 5) ? 'fas fa-star-half-alt fa-sm text-primary' : (product.review >= 5) ? 'fas fa-star fa-sm text-primary' : 'far fa-star fa-sm text-primary'"></i>
+        </p>
         <p><span class="mr-1"><strong>${{product.prixUnitaire}}</strong></span></p>
-        <p class="pt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, sapiente illo. Sit
-          error voluptas repellat rerum quidem, soluta enim perferendis voluptates laboriosam. </p>
+        <p class="pt-1">{{product.detailProduit.descriptionProduit}} </p>
         <br>
         <div class="table-responsive">
           <table class="table table-sm table-borderless mb-0">
             <tbody>
             <tr>
               <th class="pl-0 w-25" scope="row"><strong>Model</strong></th>
-              <td>Shirt 5407X</td>
+              <td>{{product.code}}</td>
             </tr>
             <tr>
               <th class="pl-0 w-25" scope="row"><strong>Color</strong></th>
@@ -129,7 +127,7 @@
             </tr>
             <tr>
               <th class="pl-0 w-25" scope="row"><strong>Delivery</strong></th>
-              <td>USA, Europe</td>
+              <td>{{product.rayon.libelle}}</td>
             </tr>
             </tbody>
           </table>
@@ -144,11 +142,13 @@
             </tr>
             <tr>
               <td class="pl-0">
-                <div class="def-number-input number-input safari_only mb-0">
-                  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+
+                <div  class="def-number-input number-input safari_only mb-0">
+                  <button [hidden]="product.stock.qte==0" onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                           class="minus"></button>
-                  <input class="quantity" min="0" name="quantity" value="1" type="number">
-                  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                  <input *ngIf="product.stock.qte!=0;else noContent" [hidden]="product.stock.qte==0" class="quantity" min="1" max="{{product.stock.qte}}" name="quantity" value="1" type="number">
+                  <ng-template class="text-danger" #noContent>Out of Stock</ng-template>
+                  <button [hidden]="product.stock.qte==0" onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                           class="plus"></button>
                 </div>
               </td>
@@ -204,28 +204,25 @@
     <div class="tab-content" id="advancedTabContent">
       <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
         <h5>Product Description</h5>
-        <p class="small text-muted text-uppercase mb-2">Shirts</p>
-        <ul class="rating">
-          <li>
-            <i class="fa fa-star fa-sm text-primary"></i>
-          </li>
-          <li>
-            <i class="fa fa-star fa-sm text-primary"></i>
-          </li>
-          <li>
-            <i class="fa fa-star fa-sm text-primary"></i>
-          </li>
-          <li>
-            <i class="fa fa-star fa-sm text-primary"></i>
-          </li>
-          <li>
-            <i class="fa fa-star fa-sm text-primary"></i>
-          </li>
-        </ul>
-        <h6>12.99 $</h6>
-        <p class="pt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, sapiente illo. Sit
-          error voluptas repellat rerum quidem, soluta enim perferendis voluptates laboriosam. Distinctio,
-          officia quis dolore quos sapiente tempore alias.</p>
+        <p class="small text-muted text-uppercase mb-2">{{product.subCategory.nameSubCategory}}</p>
+        <p class="rating" >
+          <!-- 1 star  -->
+          <i [class]="(product.review == 0) ? 'far fa-star fa-sm text-primary' : (product.review > 0 && product.review < 1) ? 'fas fa-star-half-alt fa-sm text-primary' : 'fas fa-star fa-sm text-primary'"></i>
+
+          <!-- 2 star  -->
+          <i [class]="(product.review > 1 && product.review < 2) ? 'fas fa-star-half-alt fa-sm text-primary' : (product.review >= 2) ? 'fas fa-star fa-sm text-primary' : 'far fa-star fa-sm text-primary'"></i>
+
+          <!-- 3 star  -->
+          <i [class]="(product.review > 2 && product.review < 3) ? 'fas fa-star-half-alt fa-sm text-primary' : (product.review >= 3) ? 'fas fa-star fa-sm text-primary' : 'far fa-star fa-sm text-primary'"></i>
+
+          <!-- 4 star  -->
+          <i [class]="(product.review > 3 && product.review < 4) ? 'fas fa-star-half-alt fa-sm text-primary' : (product.review >= 4) ? 'fas fa-star fa-sm text-primary' : 'far fa-star fa-sm text-primary'"></i>
+
+          <!-- 5 star  -->
+          <i [class]="(product.review> 4 && product.review < 5) ? 'fas fa-star-half-alt fa-sm text-primary' : (product.review >= 5) ? 'fas fa-star fa-sm text-primary' : 'far fa-star fa-sm text-primary'"></i>
+        </p>
+        <h6>{{product.prixUnitaire}} $</h6>
+        <p class="pt-1">{{product.detailProduit.descriptionProduit}}</p>
       </div>
       <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
         <h5>Additional Information</h5>

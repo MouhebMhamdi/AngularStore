@@ -80,9 +80,9 @@ public class DetailProduitServiceImpl implements DetailProduitService{
 		return detailProduitRepository.findByDateCreationBefore(dateBefore);
 	}
 
-	public List<Produit> retrieveByCategorieProduit(CategorieProduit categorieProduit) {
+	/*public List<Produit> retrieveByCategorieProduit(CategorieProduit categorieProduit) {
 		return detailProduitRepository.findByCategorieProduit(categorieProduit);
-	}
+	}*/
 
 	public List<Produit> retrieveByDateDernieremodification(Date derniereModification) {
 		return detailProduitRepository.findByDateDernieremodification(derniereModification);

@@ -41,7 +41,7 @@ public class ProduitTest {
     DetailProduit dp= new DetailProduit();
     dp.setDateCreation(date);
     dp.setDateDerniereModification(date);
-    dp.setCategorieProduit(CategorieProduit.Elecromenager);
+   // dp.setCategorieProduit(CategorieProduit.Elecromenager);
 
     Produit p=new Produit();
     p.setCode("123");

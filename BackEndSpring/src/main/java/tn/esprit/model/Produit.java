@@ -30,38 +30,37 @@ public class Produit implements Serializable {
   @NotNull
   private String image;
   @NotNull
-  private int nbrlikes;
+  private float review;
 
   /*****Les associations*****/
   @Nullable
   @NotFound(action = NotFoundAction.IGNORE)
   @ManyToMany(cascade = CascadeType.ALL)
-  @JsonIgnore
   Set<Fournisseur> fournisseurs;
 
   @Nullable
   @NotFound(action = NotFoundAction.IGNORE)
   @ManyToOne
-  @JsonIgnore
   private Rayon rayon;
 
   @Nullable
   @NotFound(action = NotFoundAction.IGNORE)
   @ManyToOne
-  @ToString.Exclude
-  @JsonIgnore
   private Stock stock;
 
   @Nullable
   @NotFound(action = NotFoundAction.IGNORE)
   @ManyToOne
-  @JsonIgnore
   private DetailFacture detailFacture;
+
+  @Nullable
+  @ManyToOne
+  @NotFound(action = NotFoundAction.IGNORE)
+  private SubCategory subCategory;
 
   @Nullable
   @NotFound(action = NotFoundAction.IGNORE)
   @OneToOne
-  @JsonIgnore
   private DetailProduit detailProduit;
 
 

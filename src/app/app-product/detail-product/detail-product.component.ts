@@ -10,6 +10,8 @@ import {Product} from "../../core/model/product";
 })
 export class DetailProductComponent implements OnInit {
   product: Product;
+  hide :boolean = false;
+
   constructor(private route: ActivatedRoute,private router: Router, private productService: ProductService) { }
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('idProduit'));
@@ -25,4 +27,6 @@ export class DetailProductComponent implements OnInit {
       this.product = data;
     });
   }
+
+
 }

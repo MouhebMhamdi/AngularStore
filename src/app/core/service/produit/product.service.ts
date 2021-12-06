@@ -9,7 +9,7 @@ import {Product} from "../../model/product";
   providedIn: 'root'
 })
 export class ProductService {
-  url = "http://localhost:8081/produit/"
+  url = "http://localhost:8080/api/produit/"
   constructor(private http: HttpClient) {
   }
   getAllProducts() : Observable<Product[]> {

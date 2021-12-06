@@ -1,7 +1,7 @@
 package tn.esprit.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -20,9 +20,8 @@ public class Stock implements Serializable {
 	private int qtemin ;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="stock")
-	private Set<Produit> produits;
-
-
-
+  @JsonIgnore
+  @ToString.Exclude
+  private Set<Produit> produits;
 
 }
