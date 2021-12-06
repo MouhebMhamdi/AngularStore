@@ -1,5 +1,6 @@
 package tn.esprit.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.NotFound;
@@ -38,15 +39,15 @@ public class DetailProduit implements Serializable {
 	private Date dateDerniereModification;
 
 
-	@NotNull
-	@Enumerated(EnumType.STRING)
-	private CategorieProduit categorieProduit;
+  @NotNull
+  private String descriptionProduit;
 
 	/*****Les associations*****/
 	@Nullable
 	@NotFound(action = NotFoundAction.IGNORE)
 	@OneToOne(mappedBy="detailProduit")
 	@ToString.Exclude
+  @JsonIgnore
 	private Produit produit;
 
 

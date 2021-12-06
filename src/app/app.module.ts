@@ -27,6 +27,7 @@ import { ContactComponent } from './contact/contact.component';
 
 import { ProfileComponent } from './app-user/profile/profile.component';
 import { DetailProductComponent } from './app-product/detail-product/detail-product.component';
+import { ShopProductsComponent } from './app-product/shop-products/shop-products.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { DetailProductComponent } from './app-product/detail-product/detail-prod
     LogoutComponent,
     ResetPasswordComponent,
     ProfileComponent,
-    DetailProductComponent
+    DetailProductComponent,
+    ShopProductsComponent
   ],
   imports: [
     BrowserModule,

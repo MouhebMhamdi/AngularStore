@@ -25,10 +25,6 @@ public interface DetailProduitRepository extends CrudRepository <DetailProduit,L
     List<Produit> findByDateCreationBefore( @Param("dateBefore") Date dateBefore);
 
     /**not yet**/
-    @Query("SELECT dp.produit FROM DetailProduit dp WHERE dp.categorieProduit  <= :categorieProduit")
-    List<Produit> findByCategorieProduit(@Param("categorieProduit")CategorieProduit categorieProduit);
-
-    /**not yet**/
     @Query("SELECT dp.produit FROM DetailProduit dp WHERE dp.dateDerniereModification <= :derniereModification")
     List<Produit> findByDateDernieremodification(@Param("derniereModification") Date derniereModification);
 

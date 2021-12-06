@@ -1,12 +1,15 @@
-#Angular Store 
-<div id="top"></div>
+# AngularStore 
 
+<div id="top"> </div>
+
+
+  
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-
+  
 
 <!-- PROJECT LOGO -->
 <br />
@@ -58,8 +61,8 @@ This is the official Angular Store documentation <br/>
 
 [![features1](./src/assets/readme/features1.png)](https://example.com)
 
-We have built an e-commerce website that features different products with different providers .
-Here's why:
+We have built an e-commerce website that features different products with different categories, prodviders ... 
+These are the main features of our website :
 * Clients Management
 * Products Management 
 * Payment Management 
@@ -67,7 +70,7 @@ Here's why:
 * Stock Management
 * Claims Management 
 
- Thanks to all the people have contributed to expanding this template!
+ Thanks to all the people that have contributed to expand this project!
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -159,9 +162,9 @@ If you have a suggestion that would make this better, please fork the repo and c
 Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
+2. Create your Feature Branch (`git checkout -b Yourbranch`)
+3. Commit your Changes (`git commit -m 'Add some features to project'`)
+4. Push to the Branch (`git push origin Yourbranch`)
 5. Open a Pull Request
 
 <p align="right">(<a href="#top">back to top</a>)</p>
