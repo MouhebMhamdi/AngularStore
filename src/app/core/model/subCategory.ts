@@ -1,6 +1,6 @@
 import {category} from "./category";
 
-export class subCategory{
+export class SubCategory{
   idSubCategory : number;
   nameSubCategory : string;
   category : category;

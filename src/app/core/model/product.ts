@@ -1,7 +1,7 @@
-import {subCategory} from "./subCategory";
 import {Rayon} from "./rayon";
 import {Stock} from "./stock";
 import {DetailProduit} from "./detailProduit";
+import {SubCategory} from "./subCategory";
 
 export class Product{
   idProduit : number;
@@ -15,5 +15,5 @@ export class Product{
   stock : Stock;
   detailProduit : DetailProduit;
   detailFacture : string;
-  subCategory: subCategory;
+  subCategory:SubCategory;
 }
