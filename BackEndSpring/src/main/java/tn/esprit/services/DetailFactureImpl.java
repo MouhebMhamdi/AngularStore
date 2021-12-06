@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.Repositories.DetailFactureRepository;
 import tn.esprit.model.DetailFacture;
-import tn.esprit.model.Facture;
 
 import java.util.List;
 
@@ -33,7 +32,7 @@ public class DetailFactureImpl implements DetailFactureService{
     public void updatedetailfacture(DetailFacture detf,long id) {
         DetailFacture f=detailFactureRepository.findById(id).get();
         if (f.getDateDernierModification()!=null){ f.setDateDernierModification(detf.getDateDernierModification()); }
-        if(f.getCategorieProduit()!=null){f.setCategorieProduit(detf.getCategorieProduit());}
+
         if(f.getDateCreation()!=null){f.setDateCreation(detf.getDateCreation());}
         detailFactureRepository.save(f);
     }

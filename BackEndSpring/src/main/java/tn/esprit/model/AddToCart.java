@@ -1,16 +1,33 @@
 package tn.esprit.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Entity(name = "add_to_cart")
+//@Entity
+@Table(name = "add_to_cart")
 public class AddToCart {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   long id;
   long product_id;
+  long user_id;
+double price;
+
+  public double getPrice() {
+    return price;
+  }
+
+  public void setPrice(double price) {
+    this.price = price;
+  }
+
+  public long getUser_id() {
+    return user_id;
+  }
+
+  public void setUser_id(long user_id) {
+    this.user_id = user_id;
+  }
+
   int qty;
   String added_Date;
 

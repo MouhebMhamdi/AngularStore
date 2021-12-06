@@ -4,7 +4,7 @@ export class Users{
     password: string;
     nom: string;
     prenom: string;
-    dateNaissance: string;
+    dateNaissance: Date;
     state:string;
     city:string;
     rue:string;

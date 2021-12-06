@@ -20,13 +20,12 @@ public class DetailFacture implements Serializable {
 	private Date DateCreation ;
 	@Temporal(value=TemporalType.TIMESTAMP)
 	private Date DateDernierModification ;
-	@Enumerated(EnumType.ORDINAL)
-	private CategorieProduit CategorieProduit;
+
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="detailFacture")
 	private Set<Produit> produits;
 	@ManyToOne
 	Facture facture;
 
-	
+
 
 }

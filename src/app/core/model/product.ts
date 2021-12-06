@@ -1,9 +1,19 @@
+import {Rayon} from "./rayon";
+import {Stock} from "./stock";
+import {DetailProduit} from "./detailProduit";
+import {SubCategory} from "./subCategory";
+
 export class Product{
-  id: string;
-  title: string;
-  description: string;
-  quantity: number;
-  price: number;
-  picture : string;
-  nbrLike: number;
+  idProduit : number;
+  code : string;
+  libelle : string;
+  prixUnitaire : number;
+  image: string;
+  review : number;
+  fournisseurs : string;
+  rayon: Rayon;
+  stock : Stock;
+  detailProduit : DetailProduit;
+  detailFacture : string;
+  subCategory:SubCategory;
 }

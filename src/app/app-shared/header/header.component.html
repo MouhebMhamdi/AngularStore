@@ -20,7 +20,7 @@
             <li><i class="ti-alarm-clock"></i> <a href="#">Daily deal</a></li>
             <li *ngIf="users.email!=null" ><i class="ti-user"></i> <a routerLink="profile">My account</a></li>
             <li *ngIf="users.email==null"><i class="ti-power-off"></i><a routerLink="login">Login</a></li>
-            <li *ngIf="users.email!=null"><i class="ti-power-off"></i><button class="button" (click)="logout()">Logout</button></li>
+            <li *ngIf="users.email!=null"><i class="ti-power-off"></i><button class="button" (click)="logout()">{{users.nom}} {{users.prenom}}</button></li>
           </ul>
         </div>
         <!-- End Top Right -->
@@ -114,7 +114,7 @@
       <div class="cat-nav-head"  >
         <div class="row" >
           <div class="col-lg-3">
-            <div class="all-category" *ngIf="router.url =='/'" >
+            <div class="all-category" *ngIf="router.url =='/' || router.url =='/home'" >
               <h3 class="cat-heading"><i class="fa fa-bars" aria-hidden="true"></i>CATEGORIES</h3>
               <ul class="main-category">
                 <li><a href="#">New Arrivals <i class="fa fa-angle-right" aria-hidden="true"></i></a>
@@ -185,20 +185,24 @@
             <div class="menu-area">
               <!-- Main Menu -->
               <nav class="navbar navbar-expand-lg">
+                <button class=" navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="navbar-collapse">
+                  
                   <div class="nav-inner">
                     <ul class="nav main-menu menu navbar-nav">
-                      <li class="active"><a routerLink="/">Home</a></li>
-                      <li><a routerLink="newPassword">Product</a></li>
+                      <li [routerLinkActive]="['active']"><a routerLink="/home">Home</a></li>
+                      <li [routerLinkActive]="['active']"><a routerLink="newPassword">Product</a></li>
                       
-                      <li><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
+                      <li [routerLinkActive]="['active']"><a href="#">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
                         <ul class="dropdown">
                           <li><a routerLink="cart">Cart</a></li>
                           <li><a routerLink="checkout">Checkout</a></li>
                         </ul>
                       </li>
-                      <li><a routerLink="/about">About Us</a></li>
-                      <li><a routerLink="/contact">Contact Us</a></li>
+                      <li [routerLinkActive]="['active']"><a routerLink="/about">About Us</a></li>
+                      <li [routerLinkActive]="['active']"><a routerLink="/contact">Contact Us</a></li>
                     </ul>
                   </div>
                 </div>

@@ -18,7 +18,8 @@ export class UserService {
   constructor(private http:HttpClient) { }
   
   addUser(data:Users){
-    return this.http.post(this.url+'/user/registerUser/',data,{responseType: 'text', observe: 'response' }).pipe(
+    console.log(data)
+    return this.http.post(this.url+'/user/registerUser/',data,{responseType: 'text'}).pipe(
       
       catchError(error => {
             let errorMsg: string;
@@ -57,21 +58,14 @@ export class UserService {
 
   }
 
-  getUserConnect(email: string) {
+  async getUserConnect(email: string) {
     console.log(email+" ")
-    return this.http.get(this.url+'/user/getUserByEmail/'+email).pipe(
+     return await this.http.get(this.url+'/user/getUserByEmail/'+email).pipe(map((res) => {
+      this.tab=res;
+      console.log(this.tab)
+      this.curUser.next(this.tab);
       
-      catchError(error => {
-            let errorMsg: string;
-            if (error.error instanceof ErrorEvent) {
-                errorMsg = 'Error: ${error.error.message}';
-            } else {
-                errorMsg = this.getServerErrorMessage(error);
-            }
-  
-            return throwError(errorMsg);
-        })
-    );;
+    }));
   }
   private getServerErrorMessage(error: HttpErrorResponse): string {
     switch (error.status) {

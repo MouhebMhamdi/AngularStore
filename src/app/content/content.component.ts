@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { faCoffee,faShoppingCart,faHeart,faPlus,faExpand } from '@fortawesome/free-solid-svg-icons';
+import {UserService} from "../core/service/user.service";
+import {Product} from "../core/model/product";
+import {ProductService} from "../core/service/produit/product.service";
+import {Observable} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-content',
@@ -13,12 +18,14 @@ export class ContentComponent implements OnInit {
   faPlus=faPlus;
   faExpand=faExpand;
   hide:boolean=false;
-
   constructor() { }
 
   ngOnInit(): void {
     this.hide=true;
     localStorage.setItem('hide',String(this.hide));
+
+
   }
+
 
 }
