@@ -16,6 +16,7 @@ import java.util.Set;
 @AllArgsConstructor
 @ToString
 @Entity
+@Table(name="produit")
 public class Produit implements Serializable {
   /*****Les attribtus*****/
   @Id

@@ -24,7 +24,6 @@ export class AuthentificationService {
 
   login(email: string, password: string) {
 
-    
     return this.http.get(this.url+'/user/login?email='+email+"&password="+password,
       { headers: { authorization: this.createBasicAuthToken(email, password) } }).pipe(map((res) => {
         this.email = email;

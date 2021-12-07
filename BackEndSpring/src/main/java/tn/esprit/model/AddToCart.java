@@ -1,16 +1,31 @@
 package tn.esprit.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
-//@Entity
+@Entity
 @Table(name = "add_to_cart")
 public class AddToCart {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   long id;
-  long product_id;
+@JsonIgnore //aalech melowl kent tjini
+  @OneToOne(fetch=FetchType.LAZY)
+  @JoinColumn(name = "product_id")
+    Produit produit;
+
   long user_id;
-double price;
+
+  public Produit getProduit() {
+    return produit;
+  }
+
+  public void setProduit(Produit produit) {
+    this.produit = produit;
+  }
+
+  double price;
 
   public double getPrice() {
     return price;
@@ -39,13 +54,9 @@ double price;
     this.id = id;
   }
 
-  public long getProduct_id() {
-    return product_id;
-  }
 
-  public void setProduct_id(long product_id) {
-    this.product_id = product_id;
-  }
+
+
 
   public int getQty() {
     return qty;
