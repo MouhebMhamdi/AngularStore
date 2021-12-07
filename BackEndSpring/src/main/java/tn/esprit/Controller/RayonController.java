@@ -49,9 +49,9 @@ public class RayonController {
 		return R.getAllRayon();
 	}
 	
-	@PutMapping("/updateRayon/{id}")
-	public void updaterayon(@RequestBody Rayon Rayon,@PathVariable long id) {
-		R.UpdateRayon(Rayon,id);
+	@PutMapping("/updateRayon")
+	public void updaterayon(@RequestBody Rayon Rayon) {
+		R.UpdateRayon(Rayon);
 	}
 	
 	@PutMapping("/assignProduitToStock")

@@ -43,10 +43,10 @@ public class FournisseurController {
 		return "Fournisseur Deleted successfully !!";
 	}
 	
-    @PostMapping("/updateFournisseur/{id}")
-    public String UpdateUser(@RequestBody Fournisseur fournisseur, @PathVariable long id){
+    @PostMapping("/updateFournisseur")
+    public String UpdateUser(@RequestBody Fournisseur fournisseur){
     
-        F.updateFournisseur(fournisseur,id);
+        F.updateFournisseur(fournisseur);
         return "Fournisseur updated successfuly Don !!";
     }
     
