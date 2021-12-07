@@ -1,69 +1,62 @@
 package tn.esprit.Controller;
 
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.Repositories.FourniseurRepository;
-import tn.esprit.model.*;
-import tn.esprit.services.*;
+import tn.esprit.model.Produit;
+import tn.esprit.services.ProduitServiceImpl;
 
-import java.util.HashSet;
-import java.util.Set;
-
+import java.util.List;
 
 
 @RestController
 @RequestMapping("/api/produit")
+@CrossOrigin(origins = "http://localhost:4200")
+@Api(tags = "Gestion de Produit")
 public class ProduitController {
-@Autowired
-ProduitServiceImpl  produitService;
 
-@Autowired
-RayonServiceImp rayonServiceImp;
+  @Autowired
+  private ProduitServiceImpl produitService;
 
-@Autowired
-StockServiceImpl stockService;
-@GetMapping("/getProductById/{id}")
-public Produit getproduitController(@PathVariable long id) {
-	return produitService.getProduitById(id);
-
-}
-
-@PostMapping("/addProduct")
- public void addProduit(@RequestBody  Produit produit) {
-  produitService.addProduit(produit);
-}
+  @ApiOperation(value = "Récupérer la liste des produits")
+  @GetMapping("/getAllProduits")
+  @ResponseBody
+  public List<Produit> getAllProduits(){
+    List<Produit> listProduit=produitService.retrieveAllProduits();
+    return listProduit;
+  }
 
 
-@PostMapping("/addRayonToProduit")
-  public void addRayonToProduit(@RequestBody Rayon rayon,@RequestParam long idProduct){
-  Produit produit=produitService.getProduitById(idProduct);
-
-  rayonServiceImp.addRayon(rayon);
-
-  produit.setRayon(rayon);
-  produitService.addProduit(produit);
-}
+  @ApiOperation(value = "Récupérer un Produit  par id")
+  @GetMapping("/getProduit/{id}")
+  @ResponseBody
+  public Produit getProduit(@PathVariable(value="id") long id){
+    return  produitService.retrieveProduit(id);
+  }
 
 
-@PostMapping("/addStockToProduct")
-  public  void addStockToProduct(@RequestBody Stock stock,@RequestParam long idProduct){
-  Produit produit=produitService.getProduitById(idProduct);
-  produit.setStock(stock);
-  stockService.addStock(stock);
-  produitService.addProduit(produit);
-}
+  @ApiOperation(value = "Ajouter un Produit")
+  @PostMapping("/addProduit/{idStock}/{idRayon}")
+  public Produit addProduit(@RequestBody Produit p,@PathVariable(value="idStock") long idStock,@PathVariable(value="idRayon") long idRayon){
+    Produit produit=produitService.addProduit(p,idStock,idRayon);
+    return produit;
+  }
 
 
+  @ApiOperation(value = "Supprimer un Produit par id")
+  @DeleteMapping("/deleteProduit/{id}")
+  @ResponseBody
+  public void deleteProduit(@PathVariable(value="id") long id){
+    produitService.deleteProduit(id);
+  }
 
-
-
-
-
-
-
-
-
-
-
+  @ApiOperation(value = "Modifier un Produit")
+  @PutMapping("/updateProduit")
+  public Produit updateProduit(@RequestBody Produit produit){
+    produitService.updateProduit(produit);
+    return getProduit(produit.getIdProduit());
+  }
 
 }

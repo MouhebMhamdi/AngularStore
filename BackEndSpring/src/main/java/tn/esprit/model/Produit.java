@@ -1,10 +1,13 @@
 package tn.esprit.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
 import lombok.*;
-
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+import org.springframework.lang.Nullable;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Set;
 
 @Getter
@@ -15,34 +18,51 @@ import java.util.Set;
 @Entity
 @Table(name="produit")
 public class Produit implements Serializable {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long  idProduit;
-	private String  code;
-	private String  libelle;
-	private float  prixUnitaire;
+  /*****Les attribtus*****/
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long  idProduit;
+  @NotNull
+  private String  code;
+  @NotNull
+  private String  libelle;
+  @NotNull
+  private float  prixUnitaire;
+  @NotNull
+  private String image;
+  @NotNull
+  private float review;
 
-	@ManyToMany(targetEntity=Fournisseur.class,cascade=CascadeType.MERGE)
-	private Set<Fournisseur> fournisseurProduit;
+  /*****Les associations*****/
+  @Nullable
+  @NotFound(action = NotFoundAction.IGNORE)
+  @ManyToMany(cascade = CascadeType.ALL)
+  Set<Fournisseur> fournisseurs;
 
-
-	@ManyToOne
-	Rayon rayon;
-	@ManyToOne
-	DetailFacture detailFacture;
-
-  @Temporal(value=TemporalType.TIMESTAMP)
-  private Date dateCreation;
-  @Temporal(value=TemporalType.TIMESTAMP)
-  private Date datDernieremodification;
-
+  @Nullable
+  @NotFound(action = NotFoundAction.IGNORE)
   @ManyToOne
-	Stock stock;
+  private Rayon rayon;
 
+  @Nullable
+  @NotFound(action = NotFoundAction.IGNORE)
   @ManyToOne
-  private Categories categories;
+  private Stock stock;
 
+  @Nullable
+  @NotFound(action = NotFoundAction.IGNORE)
+  @ManyToOne
+  private DetailFacture detailFacture;
 
+  @Nullable
+  @ManyToOne
+  @NotFound(action = NotFoundAction.IGNORE)
+  private SubCategory subCategory;
+
+  @Nullable
+  @NotFound(action = NotFoundAction.IGNORE)
+  @OneToOne
+  private DetailProduit detailProduit;
 
 
 }

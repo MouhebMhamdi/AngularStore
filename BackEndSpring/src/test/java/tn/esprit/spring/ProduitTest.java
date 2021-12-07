@@ -8,66 +8,54 @@ import tn.esprit.Repositories.FourniseurRepository;
 import tn.esprit.model.*;
 import tn.esprit.services.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 @SpringBootTest
 public class ProduitTest {
-    @Autowired
-    FourniseurRepository fourniseurRepository;
-
-    @Autowired
-    ProduitServiceImpl produitService;
-
-    @Autowired
-    RayonServiceImp rayonServiceImp;
-
-    @Autowired
-    DetailFactureImpl detailFactureImpl;
-
-
-    @Autowired
-    StockServiceImpl stockServiceImpl;
-
-    @Autowired
-    FournisseurServiceImpl fournisseurService;
-
-
-    @Test
-    public void Test(){
-        //!!!!!!!!!!!!!Noté Bien changer les Ids pour les quatre instructions suivantes selon les valeurs de la base !!!!
-        //!!!!!! Il faut exécutez-les teste detail Produit, Rayon, Detail Facture, Stock avant de tester cette classe!!!!
+  @Autowired
+  StockServiceImpl ss;
+  @Autowired
+  ProduitServiceImpl ps;
+  @Autowired
+  RayonServiceImp rs;
+  @Autowired
+  DetailFactureImpl df;
 
 
 
-        /*Add Detail product*/
+  @Test
+  void contextLoads() throws ParseException {
+
+    System.out.println("**************");
 
 
-        //*******************************************************************
-        //Add Rayon =================
 
-        Rayon r=rayonServiceImp.getRayonById(6);
+    Stock stock=ss.getStockById(1l);
+    Rayon rayon=rs.getRayonById(1l);
 
-        //================================================
-        //detail Facture ==============
-        DetailFacture d=detailFactureImpl.getDetailFacture(2);
+    Date date= new SimpleDateFormat( "yyyyMMdd" ).parse( "19980112" );
+    DetailProduit dp= new DetailProduit();
+    dp.setDateCreation(date);
+    dp.setDateDerniereModification(date);
+   // dp.setCategorieProduit(CategorieProduit.Elecromenager);
 
-        //==============================
-        //Add Stock =======================
-        Stock s=stockServiceImpl.getStockById(7);
+    Produit p=new Produit();
+    p.setCode("123");
+    p.setLibelle("saba");
+    p.setPrixUnitaire(0.1f);
+    //  ps.addProduit(p,stock.getIdStock(), rayon.getIdRayon());
+    //  Produit produitUpdate= new Produit();
+    // produitUpdate.setLibelle("aaaaaa");
+    //  produitUpdate.setPrixUnitaire(12);
+    // ps.updateProduit(produitUpdate,57l);
+    //  ps.deleteProduit(57l);
+    System.out.println("Test Passed !!!!");
 
-        // Produit ==========================
-        Produit p=new Produit();
-        Fournisseur fournisseur=fourniseurRepository.findById(5L).get();
-        Set<Fournisseur> f = new HashSet<Fournisseur>();
-        f.add(fournisseur);
 
-        p.setRayon(r);
 
-        p.setDetailFacture(d);
-        p.setStock(s);
-        p.setFournisseurProduit(f);
-        produitService.addProduit(p);
-
-    }
+  }
 }

@@ -13,6 +13,8 @@ import { ResetPasswordComponent } from './authentificationAndRegister/reset-pass
 import {ContactComponent} from "./contact/contact.component";
 
 import { ProfileComponent } from './app-user/profile/profile.component';
+import {DetailProductComponent} from "./app-product/detail-product/detail-product.component";
+import {ShopProductsComponent} from "./app-product/shop-products/shop-products.component";
 
 
 const routes: Routes = [
@@ -23,11 +25,14 @@ const routes: Routes = [
   {path:'content', component: ContentComponent},
   {path:'checkout', component: CheckoutComponent},
   {path:'cart', component: AppCartComponent},
+  {path:'shop', component: ShopProductsComponent},
+  {path:'product/:idProduit', component: DetailProductComponent},
   {path:'login',component:LoginComponent},
   {path:'logout',component:LogoutComponent},
   {path:'newPassword',component:ResetPasswordComponent},
   {path:'profile',component:ProfileComponent},
   {path: '**',component: NotFoundComponent }
+
 
 ];
 

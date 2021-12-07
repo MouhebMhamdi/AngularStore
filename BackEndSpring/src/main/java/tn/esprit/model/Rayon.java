@@ -1,5 +1,6 @@
 package tn.esprit.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,11 +17,14 @@ public class Rayon implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long idRayon ;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="rayon")
-	private Set<Produit> produits;
 
 	private String libelle;
 
 	private String code ;
+
+
+  @OneToMany(cascade = CascadeType.ALL, mappedBy="rayon")
+  @JsonIgnore
+  @ToString.Exclude
+  private Set<Produit> produits;
 }

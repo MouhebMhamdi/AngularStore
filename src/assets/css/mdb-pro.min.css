@@ -1,0 +1,17 @@
+@charset "UTF-8";
+.view{position:relative;overflow:hidden;cursor:default}.view .mask{position:absolute;top:0;right:0;left:0;width:100%;height:100%;overflow:hidden}.view img,.view video{position:relative;display:block}.view video.video-intro{top:50%;left:50%;z-index:-100;width:auto;min-width:100%;height:auto;min-height:100%;-webkit-transition:1s opacity;transition:1s opacity;-webkit-transform:translateX(-50%) translateY(-50%);transform:translateX(-50%) translateY(-50%)}.overlay .mask{opacity:0;-webkit-transition:all .4s ease-in-out;transition:all .4s ease-in-out}.overlay .mask:hover{opacity:1}
+.zoom img,.zoom video{-webkit-transition:all .2s linear;transition:all .2s linear}
+.zoom:hover img,.zoom:hover video{-webkit-transform:scale(1.1);transform:scale(1.1)}
+/*!
+ * Waves v0.7.6
+ * http://fian.my.id/Waves
+ *
+ * Copyright 2014-2018 Alfiana E. Sibuea and other contributors
+ * Released under the MIT license
+ * https://github.com/fians/Waves/blob/master/LICENSE *//*!
+ * animate.css -http://daneden.me/animate
+ * Version - 3.7.0
+ * Licensed under the MIT license - http://opensource.org/licenses/MIT
+ *
+ * Copyright (c) 2018 Daniel Eden
+ */[type=radio]:checked,[type=radio]:not(:checked){position:absolute;pointer-events:none;opacity:0}.form-check-input[type=radio]:checked+label,.form-check-input[type=radio]:not(:checked)+label,label.btn input[type=radio]:checked+label,label.btn input[type=radio]:not(:checked)+label{position:relative;display:inline-block;height:1.5625rem;padding-left:35px;line-height:1.5625rem;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-transition:.28s ease;transition:.28s ease}.clockpicker-plate,.picker,.select-wrapper .select-dropdown{-webkit-user-select:none;-ms-user-select:none}.form-check-input[type=radio]+label:after,.form-check-input[type=radio]+label:before,label.btn input[type=radio]+label:after,label.btn input[type=radio]+label:before{position:absolute;top:0;left:0;z-index:0;width:16px;height:16px;margin:4px;content:"";-webkit-transition:.28s ease;transition:.28s ease}.form-check-input[type=radio].with-gap:checked+label:after,.form-check-input[type=radio].with-gap:checked+label:before,.form-check-input[type=radio]:checked+label:after,.form-check-input[type=radio]:checked+label:before,.form-check-input[type=radio]:not(:checked)+label:after,.form-check-input[type=radio]:not(:checked)+label:before,label.btn input[type=radio].with-gap:checked+label:after,label.btn input[type=radio].with-gap:checked+label:before,label.btn input[type=radio]:checked+label:after,label.btn input[type=radio]:checked+label:before,label.btn input[type=radio]:not(:checked)+label:after,label.btn input[type=radio]:not(:checked)+label:before{border-radius:50%}.rating li,.side-nav .social li{display:inline-block}

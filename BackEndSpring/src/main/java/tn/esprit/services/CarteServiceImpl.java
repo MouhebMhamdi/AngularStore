@@ -26,7 +26,7 @@ public class CarteServiceImpl implements  CartService{
       AddToCart obj=new AddToCart();
       obj.setQty(qty);
       obj.setUser_id(userId);
-      Produit p=produitService.getProduitById(productId);
+      Produit p=produitService.retrieveProduit(productId);
       obj.setProduit(p);
       //TO DO price has to been checked with quantity
       obj.setPrice(price);

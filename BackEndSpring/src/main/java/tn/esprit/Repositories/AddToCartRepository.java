@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @Repository
 public interface AddToCartRepository extends JpaRepository<AddToCart,Long> {
+
   //add by product with user Id
   //remove carte by user ID
   //getCart by user id
@@ -33,5 +34,6 @@ public interface AddToCartRepository extends JpaRepository<AddToCart,Long> {
   @Transactional
   @Query("update AddToCart addCart set addCart.qty=:qty,addCart.price=:price WHERE addCart.id=:cart_id")
   void updateQtyByCartId(@Param("cart_id")Long cart_id,@Param("price")double price,@Param("qty")Integer qty);
+
 
 }
