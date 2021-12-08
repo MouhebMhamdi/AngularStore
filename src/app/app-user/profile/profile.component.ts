@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject } from 'rxjs';
@@ -15,7 +15,7 @@ import { UserService } from 'src/app/core/service/user.service';
 export class ProfileComponent implements OnInit {
    users: Users;
   myForm: FormGroup;
-
+  submitted = false;
   constructor(private router:Router, private authService:AuthentificationService,private userService:UserService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
@@ -26,14 +26,14 @@ export class ProfileComponent implements OnInit {
     this.users=new Users();
       
     this.myForm= new FormGroup({
-      'prenom':new FormControl(''),
-      'nom':new FormControl(''),
-      'dateNaissance':new FormControl(''),
-      'tel':new FormControl(''),
-      'street':new FormControl(''),
-      'city':new FormControl(''),
-      'state':new FormControl(''),
-      'zip':new FormControl('')
+      'prenom':new FormControl('',Validators.required),
+      'nom':new FormControl('',Validators.required),
+      'dateNaissance':new FormControl('',Validators.required),
+      'tel':new FormControl('',Validators.required),
+      'street':new FormControl('',Validators.required),
+      'city':new FormControl('',Validators.required),
+      'state':new FormControl('',Validators.required),
+      'zip':new FormControl('',Validators.required)
     })
     console.log(this.verifUserRoleConncet(String(localStorage.getItem("email"))))
     this.authService.sharedUser.subscribe(
@@ -61,6 +61,10 @@ redirect(){
   this.router.navigate(['/']);
 }
   updateProfile(){
+    this.submitted = true;
+    if (this.myForm.invalid) {
+     return;
+    }
     this.userService.updateUser(this.users,String(localStorage.getItem('data'))).subscribe((res)=>{
     this.toastr.success('Profile updated thanks !');
 

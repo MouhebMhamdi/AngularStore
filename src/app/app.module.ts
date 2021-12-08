@@ -19,7 +19,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LogoutComponent } from './authentificationAndRegister/logout/logout.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ResetPasswordComponent } from './authentificationAndRegister/reset-password/reset-password.component';
-
+import {NgxPaginationModule} from 'ngx-pagination'; 
 import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './app-shared/not-found/not-found.component';
 import { AppSharedComponent } from './app-shared/app-shared.component';
@@ -61,7 +61,8 @@ import { ShopProductsComponent } from './app-product/shop-products/shop-products
     ToastrModule.forRoot(),
     FontAwesomeModule,
     NgbModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

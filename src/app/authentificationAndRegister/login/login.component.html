@@ -1,208 +1,213 @@
+<div class="wrapper fadeInDown" *ngIf="!hideAddUser && !hideReset">
+  <div id="formContent">
 
-<div class="wrapper fadeInDown">
-    <div id="formContent">
-
-              <div class="alert alert-danger" *ngIf="msg!=null">
-                {{msg}}
-              </div>
-              <form class="w-75 mx-auto" [formGroup]="myForm" (ngSubmit)="login(myForm)">
-               
-                <div class="fadeIn first pt-5 d-flex justify-content-center mb-3 ">
-                  <i class="bi bi-person-circle "></i>
-                </div>
-  
-                <div class="form-group">
-                  <label>Email</label>
-                  <input type="text" class="form-control" formControlName="email"  [ngClass]="{ 'is-invalid': submitted && myForm.controls.email.errors }">
-                  <div *ngIf="myForm.controls['email'].hasError('required')" class="invalid-feedback">
-                    <div>Email is required</div>
-                  </div>
-                  <div *ngIf="myForm.controls['email'].hasError('email')" class="invalid-feedback">
-                    <div>Email is not valid</div>
-                  </div>
-               
-                </div>
-                
-                <div class="form-group">
-                  <label>Password</label>
-                  <input type="password" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && myForm.controls.password.errors }">
-                  <div *ngIf="myForm.controls['password'].hasError('required')" class="invalid-feedback">
-                    <div>Password is required</div>
-                  </div>
-                </div>
-               
-  
-                <hr class="my-4 ">
-                <p class="text-center">Don't have an account ? <a style="cursor: pointer;" (click)="openVerticallyCentered(add)" style="color:dodgerblue;text-decoration: none;"> Create an account</a>.</p>
-                <p class="text-center"><a style="cursor: pointer;" (click)="openVerticallyCentered(resetpass)" style="color:dodgerblue;text-decoration: none;"> Forgot password?</a>.</p>
-  
-                <button type="submit" class="btn btn-outline-primary mt-3 mb-2" >Login</button>
-                <br>
-              </form>
-  
-
-    </div>
-  </div>
-
-  <ng-template #add let-modal  >
-    <div class="container">
-        <div class="header">
-          
-          <h2 class="modal-title pt-5" id="modal-basic-title">Create Account</h2>
-        
-        </div>
-        <div class="modal-body">
-        
-        <form class="w-75 mx-auto mb-5"  [formGroup]="myForm1" (ngSubmit)="addUser()">
-          
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label>First Name:</label>
-                <input  type="text" class="form-control" formControlName="prenom"  [(ngModel)]="users.prenom" [ngClass]="{ 'is-invalid': submitted && myForm1.controls.prenom.errors }">
-                
-                <div *ngIf="myForm1.controls['prenom'].hasError('required')" class="invalid-feedback">
-                  <div>First Name is required</div>
-                </div>
-              </div>
+            <div class="alert alert-danger" *ngIf="msg!=null">
+              {{msg}}
             </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label>Last Name:</label>
-                <input  type="text" class="form-control" formControlName="nom"  [(ngModel)]="users.nom" [ngClass]="{ 'is-invalid': submitted && myForm1.controls.nom.errors }">
-               
-                <div *ngIf="myForm1.controls['nom'].hasError('required')" class="invalid-feedback">
-                  <div>Last  Name is required</div>
-                </div>
+            <form class="w-75 mx-auto" [formGroup]="myForm" (ngSubmit)="login(myForm)">
+             
+              <div class="fadeIn first pt-5 d-flex justify-content-center mb-3 ">
+                <i class="bi bi-person-circle "></i>
               </div>
-            </div>
-            <div class="col-sm-12">
+
               <div class="form-group">
-                <label>BirthDate:</label>
-                <input  type="date" class="form-control" formControlName="dateNaissance" [(ngModel)]="users.dateNaissance" [ngClass]="{ 'is-invalid': submitted && myForm1.controls.dateNaissance.errors }">
-                <div *ngIf="myForm1.controls['dateNaissance'].hasError('required')" class="invalid-feedback">
-                  <div>BirthDate is required</div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label>Email:</label>
-                <input  type="email" class="form-control" formControlName="email"  [(ngModel)]="users.email" [ngClass]="{ 'is-invalid': submitted && myForm1.controls.email.errors }">
-                <div *ngIf="myForm1.controls['email'].hasError('email')" class="invalid-feedback">
-                  <div>Email is invalid</div>
-                </div>
-                <div *ngIf="myForm1.controls['email'].hasError('required')" class="invalid-feedback">
+                <label>Email</label>
+                <input type="text" class="form-control" formControlName="email"  [ngClass]="{ 'is-invalid': submitted && myForm.controls.email.errors }">
+                <div *ngIf="myForm.controls['email'].hasError('required')" class="invalid-feedback">
                   <div>Email is required</div>
                 </div>
+                <div *ngIf="myForm.controls['email'].hasError('email')" class="invalid-feedback">
+                  <div>Email is not valid</div>
+                </div>
+             
               </div>
-            </div>
-            <div class="col-sm-6">
+              
               <div class="form-group">
-                <label>Password:</label>
-                <input  type="password" class="form-control" formControlName="password"  [(ngModel)]="users.password" [ngClass]="{ 'is-invalid': submitted && myForm1.controls.password.errors }">
-                <div *ngIf="myForm1.controls['password'].hasError('required')" class="invalid-feedback">
+                <label>Password</label>
+                <input type="password" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && myForm.controls.password.errors }">
+                <div *ngIf="myForm.controls['password'].hasError('required')" class="invalid-feedback">
                   <div>Password is required</div>
                 </div>
-              
               </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="form-group">
-                <label>Picture:</label>
-                <input  type="file" class="form-control" name="picture" formControlName="picture"  (change)="onFileChanged($event)">
-                <div *ngIf="myForm1.controls['picture'].hasError('required')" class="invalid-feedback">
-                  <div>Picture is required</div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-12">
-              <div class="form-group">
-                <label>Job:</label>
-                <select  class="form-control" name="profession" formControlName="profession" [(ngModel)]="users.profession" [ngClass]="{ 'is-invalid': submitted && myForm1.controls.profession.errors }">
-                  <option ></option>
-                  <option value="Docteur">Docteur</option>
-                  <option value="Ingenieur">Ingenieur</option>
-                  <option value="Etudiant">Etudiant</option>
-                  <option value="Commercial">Commercial</option>
-                  <option value="Cadre">Cadre</option>
-                  <option value="Autre">Autre</option>
-              </select> 
-              <div *ngIf="myForm1.controls['profession'].hasError('required')" class="invalid-feedback">
-                <div>Job is required</div>
-              </div>
-              </div>
-      
              
-            </div>
-            </div>
-           
-          <br>
-          <button class="btn btn-outline-success" type="submit"
-                  >
-                    save
-                 </button>
-          &nbsp;
-        
-        </form>
-      </div>
-    
-      </div>
-  </ng-template>
-  <ng-template #resetpass let-modal  >
-    <div class="container w-75 mx-auto  resetPass">
-        <div class="heading">
-          <h2 class="modal-title pt-5" id="modal-basic-title">Reset password</h2>
-          
-        </div>
-        <div class="modal-body">
-        <form class="w-75 mx-auto " #f1="ngForm" [formGroup]="myFormReset" (ngSubmit)="sendEmail()">
-          
-          <div class="row">
-            <div class="col-sm-12">
-              
-                <div class="row mt-5">
-                    <div class="col-sm-8 ">
-                        <div class="form-group ">
-                            <label>Email:</label>
-                            <input type="email"  class="form-control"   formControlName="email" [(ngModel)]="users.email" [ngClass]="{ 'is-invalid': submitted && myFormReset.controls.email.errors }">
-                            <div *ngIf="myFormReset.controls['email'].hasError('required')" class="invalid-feedback">
-                              <div>Email is required</div>
-                            </div>
-                            <div *ngIf="myFormReset.controls['email'].hasError('email')" class="invalid-feedback">
-                              <div>Email is not valid</div>
-                            </div>
-                        
-                          </div>
 
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="form-group  pt-4">
-                        <button class="btn btn-outline-success pt-3" type="submit">
-                              Send
-                        </button>
-                        </div>
-                    </div>
-                </div>
-                <br><br>
-                <div class="load pt-2" *ngIf="loading">
-                  <div  class="d-flex justify-content-center">
-                    <div class="d-flex justify-content-center">
-                        <div class="spinner"></div>
-                      </div>
-                
-                  </div>
-                </div>
-             
+              <hr class="my-4 ">
+              <p class="text-center">Don't have an account ? <a style="cursor: pointer;" (click)="openCreateAccount()" style="color:dodgerblue;text-decoration: none;"> Create an account</a>.</p>
+              <p class="text-center"><a style="cursor: pointer;" (click)="openResetPass()" style="color:dodgerblue;text-decoration: none;"> Forgot password?</a>.</p>
+
+              <button type="submit" class="btn btn-outline-primary mt-3 mb-2" >Login</button>
+              <br>
+            </form>
+
+
+  </div>
+</div>
+
+
+  <div class="container wrapper fadeInDown mt-5 mb-5 " *ngIf="hideAddUser">
+    <div id="formContentAdd">
+      <div class="header d-flex flex-row">
+        
+        <h2 class="modal-title pt-5" id="modal-basic-title">Create Account</h2> 
+      
+      </div>
+      <div class="modal-body">
+      
+      <form class="w-75 mx-auto mb-5"  [formGroup]="myForm1" (ngSubmit)="addUser()">
+        
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>First Name:</label>
+              <input  type="text" class="form-control" formControlName="prenom"  [(ngModel)]="users.prenom" [ngClass]="{ 'is-invalid': submitted && myForm1.controls.prenom.errors }">
+              
+              <div *ngIf="myForm1.controls['prenom'].hasError('required')" class="invalid-feedback">
+                <div>First Name is required</div>
+              </div>
             </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Last Name:</label>
+              <input  type="text" class="form-control" formControlName="nom"  [(ngModel)]="users.nom" [ngClass]="{ 'is-invalid': submitted && myForm1.controls.nom.errors }">
+             
+              <div *ngIf="myForm1.controls['nom'].hasError('required')" class="invalid-feedback">
+                <div>Last  Name is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label>BirthDate:</label>
+              <input  type="date" class="form-control" formControlName="dateNaissance" [(ngModel)]="users.dateNaissance" [ngClass]="{ 'is-invalid': submitted && myForm1.controls.dateNaissance.errors }">
+              <div *ngIf="myForm1.controls['dateNaissance'].hasError('required')" class="invalid-feedback">
+                <div>BirthDate is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Email:</label>
+              <input  type="email" class="form-control" formControlName="email"  [(ngModel)]="users.email" [ngClass]="{ 'is-invalid': submitted && myForm1.controls.email.errors }">
+              <div *ngIf="myForm1.controls['email'].hasError('email')" class="invalid-feedback">
+                <div>Email is invalid</div>
+              </div>
+              <div *ngIf="myForm1.controls['email'].hasError('required')" class="invalid-feedback">
+                <div>Email is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Password:</label>
+              <input  type="password" class="form-control" formControlName="password"  [(ngModel)]="users.password" [ngClass]="{ 'is-invalid': submitted && myForm1.controls.password.errors }">
+              <div *ngIf="myForm1.controls['password'].hasError('required')" class="invalid-feedback">
+                <div>Password is required</div>
+              </div>
+            
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label>Picture:</label>
+              <input  type="file" class="form-control" name="picture" formControlName="picture"  (change)="onFileChanged($event)">
+              <div *ngIf="myForm1.controls['picture'].hasError('required')" class="invalid-feedback">
+                <div>Picture is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label>Job:</label>
+              <select  class="form-control" name="profession" formControlName="profession" [(ngModel)]="users.profession" [ngClass]="{ 'is-invalid': submitted && myForm1.controls.profession.errors }">
+                <option ></option>
+                <option value="Docteur">Docteur</option>
+                <option value="Ingenieur">Ingenieur</option>
+                <option value="Etudiant">Etudiant</option>
+                <option value="Commercial">Commercial</option>
+                <option value="Cadre">Cadre</option>
+                <option value="Autre">Autre</option>
+            </select> 
+            <div *ngIf="myForm1.controls['profession'].hasError('required')" class="invalid-feedback">
+              <div>Job is required</div>
+            </div>
+            </div>
+  
+          </div>
+          </div>
+         
+        <br>
+        <div class="row d-flex justify-content-center">
+          <div class="col-sm-4">
+            <button class="btn btn-outline-succes" type="submit">
+              save
+            </button>
+          </div>
+          <div class="col-sm-4">
+            <a class="btn btn-outline-succes text-white" (click)="openCreateAccount()"  >Concel</a>
+          </div>
+        </div>
+       
+        &nbsp;
+      
+      </form>
+    </div>
+  </div>
+    </div>
+
+
+  <div class="container d-flex justify-content-center  resetPass mt-5 mb-5 " *ngIf="hideReset">
+    <div id="formContent" >
+      <div class="header ">
+            <h2 class="modal-title pt-3" id="modal-basic-title" >Reset password</h2> 
+          
+      </div>
+        
+      <div class="modal-body ">
+      <form class="w-75 mx-auto " #f1="ngForm" [formGroup]="myFormReset" (ngSubmit)="sendEmail()">
+        <div class="fadeIn pt-2 d-flex justify-content-center  ">
+          <i class="bi bi-shield-lock-fill"></i>
+        </div>
+        <p class="pt-3 text-center">Enter your email address and we'll email you instructions on how to reset your password</p>
+        <div class="row">
+          <div class="col-sm-12">
+            
+              
+                  
+                      <div class="form-group pt-3">
+                          <label>Email:</label>
+                          <input type="email"  class="form-control"   formControlName="email" [(ngModel)]="users.email" [ngClass]="{ 'is-invalid': submitted && myFormReset.controls.email.errors }">
+                          <div *ngIf="myFormReset.controls['email'].hasError('required')" class="invalid-feedback">
+                            <div>Email is required</div>
+                          </div>
+                          <div *ngIf="myFormReset.controls['email'].hasError('email')" class="invalid-feedback">
+                            <div>Email is not valid</div>
+                          </div>
+                      
+                        </div>
+
+                 
+                        <div class="load pt-4 pb-5 pr-3 text-center" *ngIf="loading">
+                                <div class="spinner"></div>
+                        </div>
+                      <div class="form-group  pt-3 text-center">
+                      <button class="btn btn-outline-success pt-3" type="submit">
+                            Send
+                      </button>
+                      </div>
+                  
+              
+              
+              
            
           </div>
          
-          
-        </form>
-      </div>
-      
-       
         </div>
+       
+        
+      </form>
+    </div>
+  </div>
+     
+</div>
 
-</ng-template>
