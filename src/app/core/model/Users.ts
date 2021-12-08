@@ -12,5 +12,6 @@ export class Users{
     zip:Int32Array;
     street:string;
     profession:string;
+    docName:string;
     
   }

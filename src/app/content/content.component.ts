@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { faCoffee,faShoppingCart,faHeart,faPlus,faExpand } from '@fortawesome/free-solid-svg-icons';
 import {UserService} from "../core/service/user.service";
 import {Product} from "../core/model/product";
-import {ProductService} from "../core/service/produit/product.service";
 import {Observable} from "rxjs";
 import {Router} from "@angular/router";
 

@@ -1,26 +1,27 @@
 package tn.esprit.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import tn.esprit.Dto.UserDto;
-import tn.esprit.Dto.contactUs;
 import tn.esprit.model.PasswordResetToken;
 import tn.esprit.model.Role;
 import tn.esprit.model.User;
-import tn.esprit.services.RoleServiceImpl;
-import tn.esprit.services.UserServiceImpl;
-import org.springframework.mail.MailException;
+import tn.esprit.services.*;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
-import tn.esprit.services.passwordResetTokenServiceImpl;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.time.Instant;
 import java.util.*;
 
@@ -45,6 +46,7 @@ public class UserController {
     private passwordResetTokenServiceImpl passworrResetToken;
 
 
+
     private MailSender mailSender;
     private SimpleMailMessage templateMessage;
 
@@ -61,14 +63,32 @@ public class UserController {
         userService.supprimerUser(id);
         return userService.chercherUser();
     }
+  public String folderPath = "C:\\Users\\Mouheb\\Documents\\SpringAngular\\AngularStore\\src\\assets\\img\\" ;
 
-        @PostMapping("/registerUser")
-    public String RegisterUser(@RequestBody User user) throws Exception {
+    @PostMapping("registerUser")
+    public String RegisterUser(@RequestBody User user)  {
+
             Role role=new Role("USER");
             if(roleService.getRoleByRole("USER")==null) this.addRole(role);
-
             userService.ajouterUser(user);
-        return "Hi "+ user.getNom()+" your registration process successfuly Don!!";
+        return "User Registred";
+    }
+
+    @RequestMapping(value = "addImgToUser/{id}",method=RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Object> AddImageToUser(@RequestParam("file") MultipartFile file,@PathVariable long id)throws IOException{
+      int random =  (int) 	(Math.random() * ((100000000 - 10) + 1))  ;
+      File convertFile = new File(folderPath+random+file.getOriginalFilename());
+      convertFile.createNewFile();
+      FileOutputStream fout = new FileOutputStream(folderPath+random+file.getOriginalFilename());
+      fout.write(file.getBytes());
+      fout.close();
+
+      User us=userService.getUserByIdClient(id);
+      us.setDocName(random+file.getOriginalFilename());
+      us.setDocType(file.getContentType());
+
+      userService.ajouterUser(us);
+      return new ResponseEntity<>("File is uploaded successfully", HttpStatus.OK);
     }
 
     @GetMapping("/getUserByEmail/{email}")
@@ -282,4 +302,36 @@ public class UserController {
         return "Role add successfully !!";
     }
 
+
+
+
+
+
+
+/*
+  @RequestMapping(value="uploadImage", method=RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+
+  public ResponseEntity<Object> uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
+
+    int random =  (int) 	(Math.random() * ((100000000 - 10) + 1))  ;
+
+
+    File convertFile = new File(folderPath+random+file.getOriginalFilename());
+    convertFile.createNewFile();
+    FileOutputStream fout = new FileOutputStream(folderPath+random+file.getOriginalFilename());
+    fout.write(file.getBytes());
+    fout.close();
+
+      ImageModel img=new ImageModel();
+      img.setDocName(random+file.getOriginalFilename());
+      img.setDocType(file.getContentType());
+
+      imageService.saveImage(img);
+
+
+    return new ResponseEntity<>("File is uploaded successfully", HttpStatus.OK);
+
+
+
+  }*/
 }

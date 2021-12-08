@@ -30,14 +30,14 @@ export class LoginComponent implements OnInit {
   loginSuccess:boolean=false;
   invalidLogin:boolean=false;
   errorMessage:string="invalid credentials";
-
+  hideAddUser:boolean=false;
   myForm: FormGroup;
   myForm1: FormGroup;
   myFormReset:FormGroup;
   msg: string;
   loading$: Observable<boolean> = of(false);
   submitted = false;
-
+  hideReset:boolean=false;
   loading = false
 
 
@@ -126,10 +126,10 @@ export class LoginComponent implements OnInit {
     this.resetPasswordService.sendEmail(this.users.email).pipe(
       finalize(() => this.loading = false)
     ).subscribe((res)=>{
-    this.tab=res;
-
-    localStorage.setItem("resetToken",this.tab["token"]);
-      this.toastr.success('Verify your email !!', 'Reset password Notification')
+      this.tab=res;
+      
+      localStorage.setItem("resetToken",this.tab["token"]);
+   
       
     },
       ()=>this.toastr.error('Error !!', 'Reset password Notification')
@@ -188,7 +188,8 @@ addUser(){
     if (this.myForm1.invalid) {
      return;
     }
-  console.log(this.users);
+   
+  
   this.userService.addUser(this.users).subscribe(
     ()=>this.addRoleToUser()
     
@@ -214,7 +215,20 @@ addUser(){
     this.router.navigate(['/user'])
   }
 */
-
+openCreateAccount(){
+  if(this.hideAddUser==false){
+    this.hideAddUser=true;
+  }else{
+    this.hideAddUser=false;
+  }
+}
+openResetPass(){
+  if(this.hideReset==false){
+    this.hideReset=true;
+  }else{
+    this.hideReset=false;
+  }
+}
   openVerticallyCentered(content:any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title', windowClass : "myCustomModalClass"}).result.then((result) => {
      // this.closeResult = `Closed with: ${result}`;
