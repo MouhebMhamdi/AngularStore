@@ -1,15 +1,24 @@
+
+# WEBSTORE
+
 # TeamSpringBootProject4TWIN3
 
--Step 1: Create entity without relation..
+### -Step 1: Create entity without relation..
 
-<<<<<<< HEAD
--Step 2: Create entity with relation.
-=======
 
--Step 2: create entity with relation.
+### -Step 2: create entity with relation.
 
->>>>>>> b5e3c5dd7f685e6a756bd6857c5577167047290a
 
-![class](https://user-images.githubusercontent.com/62067806/137731646-f205f50d-2a9c-4857-bfd7-bfa0ae2f5a94.png)
+![image](https://user-images.githubusercontent.com/62067806/139555829-9c2f2e53-2a79-43bd-b519-4a3ad398bd74.png)
 
--Step 3: create CRUD 
+
+### -Step 3: create CRUD 
+
+### -Step 4: Add new Entity
+
+### -Step 5: Add Controllers
+
+### -Step 6: Add Spring security config 
+
+![image](https://user-images.githubusercontent.com/62067806/140757381-9ccb420a-6216-45ce-80e3-2ef1d7021f72.png)
+
