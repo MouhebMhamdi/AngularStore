@@ -17,7 +17,7 @@ import java.util.List;
 public class AddToCartController {
 
   @Autowired
-CartService carteService;
+CarteServiceImpl carteService;
 
 
 
@@ -62,22 +62,31 @@ CartService carteService;
     }
 
   }
+/*
 
+  @ResponseBody
+  @DeleteMapping("/removeproductfromcart/{id}")
+  public String deletproductfromcart(@PathVariable(value="id") long productId){
+    carteService.deletproductfromcart(productId);
+  return "deleted";
+  }
+*/
 
-  @PostMapping("removeproductfromcart")
-  public ResponseEntity<?>RemoveCartWithProductId(@RequestBody HashMap<String,String> removeCartRequest){
+  @RequestMapping("removeProductFromCart")
+  public ResponseEntity<?> removeCartwithProductId(@RequestBody HashMap<String,String> removeCartRequest) {
     try {
       String keys[] = {"userId","cartId"};
       if(ShoppingConfiguration.validationwithHashmap(keys, removeCartRequest)) {
+
       }
-      List<AddToCart> obj=carteService.removeCartByUserId(Long.parseLong(removeCartRequest.get("cartId")),Long.parseLong(removeCartRequest.get("userId")));
+      List<AddToCart> obj = carteService.removeCartByUserId(Long.parseLong(removeCartRequest.get("cartId")), Long.parseLong(removeCartRequest.get("userId")));
       return ResponseEntity.ok(obj);
     }catch(Exception e) {
-      return ResponseEntity.badRequest().body("");
+      return ResponseEntity.badRequest().body(e.getMessage());
     }
   }
 
-  @RequestMapping("getcartbyuserid")//lena maamlch POST 3awadhha bel getCartRequest ??
+  @RequestMapping("/getcartbyuserid")//lena maamlch POST 3awadhha bel getCartRequest ??
   public ResponseEntity<?>getCartByUserId(@RequestBody HashMap<String,String> getCartRequest){
     try {
       String keys[] = {"userId"};

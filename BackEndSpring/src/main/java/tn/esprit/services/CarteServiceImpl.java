@@ -46,10 +46,26 @@ throw new Exception(e.getMessage());
   }
 
   @Override
+  public String deletproductfromcart(Long productId) {
+     addToCartRepository.deleteById(productId);
+     return "product deleted";
+  }
+
+/*
+  @Override
   public List<AddToCart> removeCartByUserId(long cartId,long userId) {
-    addToCartRepository.deleteCartByIdAndUserId(userId,cartId);
+    addToCartRepository.deleteCartByIdAndUserId(cartId,userId);
     return  this.getCartByUserId(userId);
   }
+*/
+
+
+  @Override
+  public List<AddToCart> removeCartByUserId(long cartId, long userId) {
+    addToCartRepository.deleteCartByIdAndUserId(userId, cartId);
+    return this.getCartByUserId(userId);
+  }
+
 
   @Override
   public void UpdateQuantityByCartId(long cartId,double price,  int qty) throws Exception {
