@@ -59,7 +59,7 @@
           <div class="col-sm-6">
             <div class="form-group">
               <label>First Name:</label>
-              <input  type="text" class="form-control" formControlName="prenom"  [(ngModel)]="users.prenom" [ngClass]="{ 'is-invalid': submitted && myForm1.controls.prenom.errors }">
+              <input  type="text" class="form-control" name="prenom" formControlName="prenom"  [(ngModel)]="users.prenom" [ngClass]="{ 'is-invalid': submitted && myForm1.controls.prenom.errors }">
               
               <div *ngIf="myForm1.controls['prenom'].hasError('required')" class="invalid-feedback">
                 <div>First Name is required</div>

@@ -101,8 +101,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "src/assets/js/jquery.js",
-              "src/assets/js/jquery.min.js"
+              
             ]
           }
         }
