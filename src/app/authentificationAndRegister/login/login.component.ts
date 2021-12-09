@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
       if(localStorage.getItem('email')!=null){
         this.router.navigate([('/')])
       }
+
     this.myForm=  this.formBuilder.group(
       {
         email: ['',[
@@ -71,7 +72,7 @@ export class LoginComponent implements OnInit {
           
         ]});
 
-  /*  this.myForm1=this.formBuilder.group({
+ this.myForm1=this.formBuilder.group({
           nom: ['',[
             Validators.required], Validators.minLength(6),
             Validators.maxLength(20)],
@@ -97,8 +98,8 @@ export class LoginComponent implements OnInit {
 
           profession: ['',[
                 Validators.required]],
-    });*/
-      
+    });
+     /* 
     this.myForm1= new FormGroup({
       'email': new FormControl('',[Validators.required,Validators.email]),
       'password': new FormControl('',[Validators.required]),
@@ -109,7 +110,7 @@ export class LoginComponent implements OnInit {
       
       'profession':new FormControl('',Validators.required )
 
-    })
+    })*/
   }
   tab:any=[];
   roles:any=[];
@@ -184,13 +185,26 @@ verifUserRoleConncet(email:string){
     )
   }
 addUser(){
+  console.log(this.myForm1.value);
+  this.users.profession
+  let data:any={
+    "prenom":this.myForm1.controls['prenom'].value,
+    "email":this.myForm1.controls['email'].value,
+    "nom":this.myForm1.controls['nom'].value,
+    "dateNaissance":this.myForm1.controls['dateNaissance'].value,
+    "password":this.myForm1.controls['password'].value,
+    "profession":this.myForm1.controls['profession'].value
+
+    
+  }
+  
   this.submitted = true;
     if (this.myForm1.invalid) {
      return;
     }
    
   
-  this.userService.addUser(this.users).subscribe(
+  this.userService.addUser(data).subscribe(
     ()=>this.addRoleToUser()
     
     ,
