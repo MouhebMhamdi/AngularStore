@@ -3,7 +3,7 @@
   <div class="tab-pane fade show active" id="man" role="tabpanel">
     <div class="tab-single">
       <div class="row">
-        <div class="col-xl-3 col-lg-4 col-md-4 col-12" *ngFor="let product of products">
+        <div class="col-xl-3 col-lg-4 col-md-4 col-12" *ngFor="let product of products | paginate: { itemsPerPage: 4, currentPage: p}">
           <div class="single-product">
             <div class="product-img">
               <a [routerLink]="['/product',product.idProduit]">
@@ -31,4 +31,7 @@
       </div>
     </div>
   </div>
+</div>
+<div class="text-center mt-5  ">
+  <pagination-controls class="my-pagination" (pageChange)="p = $event"></pagination-controls>
 </div>

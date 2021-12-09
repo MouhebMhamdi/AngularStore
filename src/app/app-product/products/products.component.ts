@@ -11,7 +11,7 @@ import {stringify} from "@angular/compiler/src/util";
 })
 export class ProductsComponent implements OnInit {
   products: Product[];
-
+  p: number = 1;
   constructor(private router: Router, private productService: ProductService) {
   }
 
