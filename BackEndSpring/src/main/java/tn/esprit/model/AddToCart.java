@@ -15,6 +15,9 @@ public class AddToCart {
   @JoinColumn(name = "product_id")
     Produit produit;
 
+  int qty;
+  String added_Date;
+
   long user_id;
 
   public Produit getProduit() {
@@ -43,8 +46,7 @@ public class AddToCart {
     this.user_id = user_id;
   }
 
-  int qty;
-  String added_Date;
+
 
   public long getId() {
     return id;
