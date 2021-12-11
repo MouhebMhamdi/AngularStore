@@ -1,6 +1,7 @@
 package tn.esprit.model;
 
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -20,8 +21,9 @@ public class DetailFacture implements Serializable {
 	private Date DateCreation ;
 	@Temporal(value=TemporalType.TIMESTAMP)
 	private Date DateDernierModification ;
+  @Cascade(org.hibernate.annotations.CascadeType.REMOVE)
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="detailFacture")
+  @OneToMany(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER, mappedBy="detailFacture")
 	private Set<Produit> produits;
 	@ManyToOne
 	Facture facture;

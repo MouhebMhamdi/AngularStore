@@ -13,5 +13,6 @@ export class Users{
     street:string;
     profession:string;
     docName:string;
+    genre:string;
     
   }

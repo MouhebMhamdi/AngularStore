@@ -3,6 +3,7 @@ package tn.esprit.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import org.springframework.data.annotation.CreatedDate;
@@ -43,7 +44,9 @@ public class DetailProduit implements Serializable {
   private String descriptionProduit;
 
 	/*****Les associations*****/
-	@Nullable
+  @Cascade(org.hibernate.annotations.CascadeType.REMOVE)
+
+  @Nullable
 	@NotFound(action = NotFoundAction.IGNORE)
 	@OneToOne(mappedBy="detailProduit")
 	@ToString.Exclude

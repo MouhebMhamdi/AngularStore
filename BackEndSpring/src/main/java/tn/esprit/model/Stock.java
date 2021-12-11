@@ -2,6 +2,8 @@ package tn.esprit.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -18,8 +20,9 @@ public class Stock implements Serializable {
 	private long idStock;
 	private int qte;
 	private int qtemin ;
+  @Cascade(org.hibernate.annotations.CascadeType.REMOVE)
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="stock")
+	@OneToMany(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER, mappedBy="stock")
   @JsonIgnore
   @ToString.Exclude
   private Set<Produit> produits;

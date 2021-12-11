@@ -3,6 +3,7 @@ package tn.esprit.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import org.springframework.lang.Nullable;
@@ -36,26 +37,28 @@ public class Produit implements Serializable {
   /*****Les associations*****/
   @Nullable
   @NotFound(action = NotFoundAction.IGNORE)
-  @ManyToMany(cascade = CascadeType.ALL)
+
+
+  @ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
   Set<Fournisseur> fournisseurs;
 
   @Nullable
   @NotFound(action = NotFoundAction.IGNORE)
-  @ManyToOne
+  @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
   private Rayon rayon;
 
   @Nullable
   @NotFound(action = NotFoundAction.IGNORE)
-  @ManyToOne
+  @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
   private Stock stock;
 
   @Nullable
   @NotFound(action = NotFoundAction.IGNORE)
-  @ManyToOne
+  @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
   private DetailFacture detailFacture;
 
   @Nullable
-  @ManyToOne
+  @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
   @NotFound(action = NotFoundAction.IGNORE)
   private SubCategory subCategory;
 

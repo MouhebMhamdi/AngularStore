@@ -24,7 +24,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.*;
-
+import java.nio.file.Paths;
 import tn.esprit.services.passwordResetTokenServiceImpl;
 @CrossOrigin(origins = "*")
 @RestController
@@ -64,10 +64,10 @@ public class UserController {
         return userService.chercherUser();
     }
   public String folderPath = "C:\\Users\\Mouheb\\Documents\\SpringAngular\\AngularStore\\src\\assets\\img\\" ;
+    public String getFolderPath2="C:\\Users\\Mouheb\\Desktop\\dashboardAdmin\\src\\assets\\";
 
     @PostMapping("registerUser")
     public String RegisterUser(@RequestBody User user)  {
-
             Role role=new Role("USER");
             if(roleService.getRoleByRole("USER")==null) this.addRole(role);
             userService.ajouterUser(user);
@@ -82,6 +82,9 @@ public class UserController {
       FileOutputStream fout = new FileOutputStream(folderPath+random+file.getOriginalFilename());
       fout.write(file.getBytes());
       fout.close();
+      FileOutputStream fout2 = new FileOutputStream(getFolderPath2+random+file.getOriginalFilename());
+      fout2.write(file.getBytes());
+      fout2.close();
 
       User us=userService.getUserByIdClient(id);
       us.setDocName(random+file.getOriginalFilename());
