@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -21,8 +22,9 @@ public class PasswordResetToken {
     private Long id;
 
     private String token;
+  @Cascade(org.hibernate.annotations.CascadeType.REMOVE)
 
-    @OneToOne(cascade = CascadeType.REMOVE,orphanRemoval = true, targetEntity = User.class)
+  @OneToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER,orphanRemoval = true, targetEntity = User.class)
     @JoinColumn( name = "user_id")
     private User user;
 

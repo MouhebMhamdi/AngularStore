@@ -1,11 +1,14 @@
 package tn.esprit.model;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Set;
+
+import static javax.persistence.CascadeType.REMOVE;
 
 
 @Getter
@@ -32,7 +35,7 @@ public class User implements Serializable {
 
 	private String email ;
 	private String password;
-	private String rue;
+
   private String city;
   private String State;
   private int zip;
@@ -41,10 +44,13 @@ public class User implements Serializable {
 	private String proffesion;
   private String docName ;
   private String docType ;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy= "user")
+  private String genre;
+
+
+	@OneToMany(cascade= { CascadeType.REMOVE}, fetch=FetchType.EAGER, mappedBy= "user")
 	private Set<Facture> factures;
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	@ManyToMany(fetch = FetchType.EAGER, cascade= { CascadeType.REMOVE})
 	@JoinTable(
 			name = "users_roles",
 			joinColumns = @JoinColumn(

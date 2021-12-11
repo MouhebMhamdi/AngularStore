@@ -6,7 +6,9 @@
             <div class="account-settings">
                 <div class="user-profile">
                     <div class="user-avatar">
-                        <img src="../../../assets/img/{{users.docName}}" alt="Admin">
+                        <img *ngIf="users.docName!=null" src="../../../assets/img/{{users.docName}}" alt="Admin">
+                        <img *ngIf="users.docName==null && users.genre =='m'" src="../../../assets/user.png" alt="Admin">
+                        <img *ngIf="users.docName==null && users.genre =='w'" src="../../../assets/femme.png" alt="Admin">
                     </div>
                     <h5 class="user-name">{{users.nom}} {{users.prenom}}</h5>
                     <h6 class="user-email">{{users.email}}</h6>
@@ -46,7 +48,7 @@
                           </div>
                     </div>
                 </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
                     <div class="form-group">
                         <label for="eMail">Date of Birthday : {{users.dateNaissance |date:'dd-MM-yyyy'}}</label>
                         
@@ -58,7 +60,7 @@
                     </div>
                 </div>
                 
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
                     <div class="form-group">
                         <label for="phone">Phone</label>
                         <input type="text" class="form-control" id="phone" placeholder="Enter phone number" [(ngModel)]="users.tel" formControlName="tel" [ngClass]="{ 'is-invalid': submitted && myForm.controls.tel.errors }">
@@ -67,7 +69,15 @@
                           </div>
                     </div>
                 </div>
-               
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="form-group">
+                    <label>Picture:</label>
+                    <input  type="file" class="form-control" name="picture" formControlName="picture" (change)="onFileSelected($event)">
+                    <div *ngIf="myForm.controls['picture'].hasError('required')" class="invalid-feedback">
+                      <div>Picture is required</div>
+                    </div>
+                  </div>
+               </div>
             </div>
             <div class="row gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">

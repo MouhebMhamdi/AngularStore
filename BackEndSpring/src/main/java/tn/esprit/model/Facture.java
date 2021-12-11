@@ -1,6 +1,7 @@
 package tn.esprit.model;
 
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
@@ -96,7 +97,7 @@ public class Facture implements  Serializable{
 		private boolean active  ;
 
 
-		@OneToMany(cascade = CascadeType.ALL, mappedBy="facture")
+  @OneToMany(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER, mappedBy="facture")
 		private Set<DetailFacture> detailFactures;
 
 		@ManyToOne

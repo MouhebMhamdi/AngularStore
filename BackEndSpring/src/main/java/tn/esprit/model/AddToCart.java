@@ -10,8 +10,8 @@ public class AddToCart {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   long id;
-@JsonIgnore //aalech melowl kent tjini
-  @OneToOne(fetch=FetchType.LAZY)
+  @JsonIgnore //aalech melowl kent tjini
+  @OneToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
   @JoinColumn(name = "product_id")
     Produit produit;
 

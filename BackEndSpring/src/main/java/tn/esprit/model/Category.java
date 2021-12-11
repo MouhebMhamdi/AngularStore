@@ -2,6 +2,7 @@ package tn.esprit.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import org.springframework.lang.Nullable;
@@ -20,8 +21,9 @@ public class Category {
 
   private String nomCategory;
 
+  @Cascade(org.hibernate.annotations.CascadeType.REMOVE)
 
-  @OneToMany(mappedBy="category",cascade=CascadeType.ALL)
+  @OneToMany(mappedBy="category",cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
   @Nullable
   @ToString.Exclude
   @JsonIgnore

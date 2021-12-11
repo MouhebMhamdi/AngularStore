@@ -82,7 +82,13 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public void supprimerUser(long id) {
-        UserRepositorie.deleteById(id);
+
+      User us=UserRepositorie.getById(id);
+
+      us.setRoles(null);
+      UserRepositorie.save(us);
+
+      UserRepositorie.deleteById(id);
     }
 
     @Override
@@ -121,7 +127,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
         if(user.getZip()!=0)cl.setZip(user.getZip());
 
-        if(user.getRue()!=null)cl.setRue(user.getRue());
+        if(user.getGenre()!=null)cl.setGenre(user.getGenre());
+
 
         if(user.getTel()!=null)cl.setTel(user.getTel());
         if(user.getStreet()!=null)cl.setStreet(user.getStreet());

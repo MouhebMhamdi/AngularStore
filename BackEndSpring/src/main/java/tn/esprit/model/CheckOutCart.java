@@ -1,5 +1,7 @@
 package tn.esprit.model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -11,7 +13,8 @@ public class CheckOutCart implements Serializable {
   long id;
   String order_id,payment_type,delivery_address;
   long user_id;
-  @OneToOne(fetch=FetchType.LAZY)
+
+  @OneToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
   @JoinColumn(name = "product_id")
   Produit product;
   //long ;

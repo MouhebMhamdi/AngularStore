@@ -2,6 +2,7 @@ package tn.esprit.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -22,8 +23,9 @@ public class Rayon implements Serializable{
 
 	private String code ;
 
+  @Cascade(org.hibernate.annotations.CascadeType.REMOVE)
 
-  @OneToMany(cascade = CascadeType.ALL, mappedBy="rayon")
+  @OneToMany(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER, mappedBy="rayon")
   @JsonIgnore
   @ToString.Exclude
   private Set<Produit> produits;
