@@ -51,6 +51,7 @@ This is the official Angular Store documentation <br/>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
+    
   </ol>
 </details>
 
@@ -144,7 +145,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 - [x] Application FrontEnd 
 - [x] Make Reactive forms 
 - [x] Make Login Logout forms 
-- [ ] Add "components" product and try to list products from spring boot 
+- [x] Add "components" product and try to list products from spring boot 
 - [ ] Multi-language Support
   - [ ] Chinese
   - [ ] Spanish
