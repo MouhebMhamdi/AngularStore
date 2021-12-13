@@ -1,11 +1,11 @@
 package tn.esprit.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 import java.util.Set;
 

@@ -1,11 +1,11 @@
 package tn.esprit.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import org.springframework.lang.Nullable;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -16,7 +16,6 @@ import java.util.Set;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name="produit")
 public class Produit implements Serializable {
   /*****Les attribtus*****/
   @Id
