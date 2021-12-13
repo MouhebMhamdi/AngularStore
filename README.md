@@ -62,7 +62,15 @@ This is the official Angular Store documentation <br/>
 
 [![features1](./src/assets/readme/features1.png)](https://example.com)
 
-We have built an e-commerce website that features different products with different categories, prodviders ... 
+### ---------------------------------------------ADMIN PAGE------------------------------------------------------------
+
+![image](https://user-images.githubusercontent.com/62067806/145749165-d26223c0-62d9-4e4b-8419-6173298fcdb6.png)
+
+We have built an e-commerce website that features different products with different categories, prodviders ... and we have an admin that he manage website Infrastructure with his own template.
+
+the Admin Code Source : <a href="https://github.com/MouhebMhamdi/dashboardAdmin">Click Here</a><br><br>
+
+
 These are the main features of our website :
 * Clients Management
 * Products Management 
