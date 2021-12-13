@@ -2,6 +2,7 @@ package tn.esprit.services;
 
 
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -46,7 +47,9 @@ public class RayonServiceImp implements RayonService{
 
 	@Override
 	public List<Rayon> getAllRayon() {
-		return rayonRepository.findAll();
+		List<Rayon> ListRayon = new ArrayList<Rayon>();
+		ListRayon.addAll(rayonRepository.findAll());
+		return ListRayon;
 	}
 
 	@Override
