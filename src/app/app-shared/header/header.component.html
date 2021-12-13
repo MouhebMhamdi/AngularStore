@@ -17,7 +17,7 @@
         <div class="right-content">
           <ul class="list-main">
             <li><i class="ti-location-pin"></i><a href="https://www.google.com/search?tbs=lf:1,lf_ui:4&tbm=lcl&sxsrf=AOaemvKsO2LMP2Ow8QDQRRE5j7U8C4YnHA:1638825210768&q=esprit&rflfq=1&num=10&ved=2ahUKEwiZkKXUi9D0AhWrhf0HHbnWA6kQtgN6BAgHEAQ#rlfi=hd:;si:,36.89904021314303,10.189579826639065;mv:[[36.901528312698275,10.195266109750637],[36.896981034920316,10.185116630838284],null,[36.89925470767929,10.19019137029446],17]" target="_blank"> Store location</a></li>
-            
+
             <li *ngIf="users.email!=null" ><i class="ti-user"></i> <a routerLink="profile">My account</a></li>
             <li *ngIf="users.email==null"><i class="ti-power-off"></i><a routerLink="login">Login</a></li>
             <li *ngIf="users.email!=null"><i class="ti-power-off"></i><button class="button" (click)="logout()">{{users.nom}} {{users.prenom}}</button></li>
@@ -66,23 +66,23 @@
       <div class="col-lg-2 col-md-3 col-12">
         <div class="right-bar">
           <!-- Search Form -->
-         
+
           <div class="sinlge-bar">
             <a routerLink="/profile" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
           </div>
           <div class="sinlge-bar shopping">
-            <a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
+            <a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">{{itemInCart}}</span></a>
             <!-- Shopping Item -->
             <div class="shopping-item">
               <div class="dropdown-cart-header">
-                <span>2 Items</span>
+                <span>{{itemInCart}} Items</span>
                 <a href="#">View Cart</a>
               </div>
               <ul class="shopping-list">
-                <li>
+                <li  *ngFor="let cartObjItem of  cartObj" >
                   <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
                   <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-                  <h4><a href="#">Woman Ring</a></h4>
+                  <h4><a href="#">{{cart_qty}}</a></h4>
                   <p class="quantity">1x - <span class="amount">$99.00</span></p>
                 </li>
                 <li>
@@ -187,12 +187,12 @@
                   <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse">
-                  
+
                   <div class="nav-inner">
                     <ul class="nav main-menu menu navbar-nav">
                       <li [routerLinkActive]="['active']"><a routerLink="/home">Home</a></li>
                       <li [routerLinkActive]="['active']"><a routerLink="/shop">Product</a></li>
-                      
+
                       <li [routerLinkActive]="['active']"><a href="/shop">Shop<i class="ti-angle-down"></i><span class="new">New</span></a>
                         <ul class="dropdown">
                           <li><a routerLink="cart">Cart</a></li>

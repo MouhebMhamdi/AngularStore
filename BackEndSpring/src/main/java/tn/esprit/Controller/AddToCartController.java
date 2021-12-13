@@ -1,11 +1,13 @@
 package tn.esprit.Controller;
 
+import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.models.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.JWTConfiguration.ShoppingConfiguration;
 import tn.esprit.model.AddToCart;
+import tn.esprit.model.Produit;
 import tn.esprit.services.CartService;
 import tn.esprit.services.CarteServiceImpl;
 
@@ -13,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/addtocart")
+@RequestMapping("api/addtocart")
 public class AddToCartController {
 
   @Autowired
@@ -21,7 +23,7 @@ CarteServiceImpl carteService;
 
 
 
-  @PostMapping("addproduct")
+  @RequestMapping("addproduct")
   public ResponseEntity<?> addCartwithProduct(@RequestBody HashMap<String,String> addCartRequest) {
     try {
       String keys[] = {"idProduit","userId","qty","price"};
@@ -40,6 +42,13 @@ CarteServiceImpl carteService;
     }
 
   }
+
+//jdida
+/*  @PostMapping("/addproducttocart/{userId}/{productId}")
+  public AddToCart addProductToCart(@RequestBody AddToCart p , @PathVariable(value="productId") long productId, @PathVariable(value="userId") long userId,int qty,double price){
+    AddToCart addToCart=carteService.addproductbyuseridandproductid(p,userId,productId,price,qty);
+    return addToCart;
+  }*/
 
 
   @PostMapping("updateqtycart")

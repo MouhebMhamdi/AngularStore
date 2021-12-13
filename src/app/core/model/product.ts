@@ -13,6 +13,7 @@ export class Product{
   fournisseurs : string;
   rayon: Rayon;
   stock : Stock;
+  qty : number;
   detailProduit : DetailProduit;
   detailFacture : string;
   subCategory:SubCategory;
