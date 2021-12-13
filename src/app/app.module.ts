@@ -58,9 +58,9 @@ import { ShopProductsComponent } from './app-product/shop-products/shop-products
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot(),NgbModule,// ToastrModule added
     FontAwesomeModule,
-    NgbModule,
+    
     NgxSpinnerModule,
     NgxPaginationModule
   ],

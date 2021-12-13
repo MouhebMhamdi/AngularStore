@@ -12,6 +12,7 @@ import { ResetPasswordService } from '../../core/service/reset-password.service'
 import { Observable, of } from 'rxjs';
 import { filter, finalize } from 'rxjs/operators';
 import { NgxSpinnerService } from "ngx-spinner";
+import Swal from 'sweetalert2'
 
 import {BehaviorSubject} from "rxjs";
 @Component({
@@ -31,29 +32,33 @@ export class LoginComponent implements OnInit {
   invalidLogin:boolean=false;
   errorMessage:string="invalid credentials";
   hideAddUser:boolean=false;
-  myForm: FormGroup;
+  myFormLogin: FormGroup;
   myForm1: FormGroup;
   myFormReset:FormGroup;
   msg: string;
+  msgAdd:string;
   loading$: Observable<boolean> = of(false);
   submitted = false;
+  submittedLogin=false;
   hideReset:boolean=false;
   loading = false
-
-
+  file:File;
+  Add:boolean;
   
   constructor(private formBuilder: FormBuilder,private spinner: NgxSpinnerService,private resetPasswordService:ResetPasswordService,private userService:UserService,private authService:AuthentificationService, /*private data: SharedDataService,*/ private router:Router, private f: FormBuilder,private toastr: ToastrService,private modalService: NgbModal)  { }
   
   
   ngOnInit(): void {
-  
+   
+ 
+    this.toastr.error('Register invalid!!', 'User Notification')
     this.users=new Users();
 
       if(localStorage.getItem('email')!=null){
         this.router.navigate([('/')])
       }
 
-    this.myForm=  this.formBuilder.group(
+    this.myFormLogin=  this.formBuilder.group(
       {
         email: ['',[
           Validators.required,
@@ -92,12 +97,14 @@ export class LoginComponent implements OnInit {
           dateNaissance: ['',[
                 Validators.required]],
 
-          picture: ['',[
-                Validators.required]],
+         
         
 
           profession: ['',[
                 Validators.required]],
+
+          genre: ['',[
+                  Validators.required]],
     });
      /* 
     this.myForm1= new FormGroup({
@@ -164,8 +171,8 @@ verifUserRoleConncet(email:string){
   )
 }
   login(myForm:FormGroup){
-    this.submitted = true;
-    if (this.myForm.invalid) {
+    this.submittedLogin = true;
+    if (this.myFormLogin.invalid) {
       return;
     }
 
@@ -184,41 +191,49 @@ verifUserRoleConncet(email:string){
     }
     )
   }
+
+  onFileSelected(event:any) {
+    this.file = event.target.files[0];
+  }
+  UploadImg(id:any){
+    this.userService.UploadImage(this.file,id).subscribe((res)=>{})
+  }
 addUser(){
+  
   console.log(this.myForm1.value);
-  this.users.profession
+  
   let data:any={
     "prenom":this.myForm1.controls['prenom'].value,
     "email":this.myForm1.controls['email'].value,
     "nom":this.myForm1.controls['nom'].value,
     "dateNaissance":this.myForm1.controls['dateNaissance'].value,
     "password":this.myForm1.controls['password'].value,
-    "profession":this.myForm1.controls['profession'].value
+    "proffesion":this.myForm1.controls['profession'].value,
+    "genre":this.myForm1.controls['genre'].value
 
     
   }
   
   this.submitted = true;
     if (this.myForm1.invalid) {
+     
      return;
     }
-   
+  
   
   this.userService.addUser(data).subscribe(
-    ()=>this.addRoleToUser()
-    
-    ,
-    ()=>this.toastr.error('Register invalid!!', 'User Notification')
-  
+    ()=>this.addRoleToUser() ,
+    ()=>{this.msgAdd="You have an error please try again or contact us",this.Add=false},
+    ()=>this.msgAdd="your account has been created !! "
   )
-
+  
   
 }
   addRoleToUser(){
     this.userService.addRoleTOUser(this.users.email,'user').subscribe(
-      ()=>this.toastr.success('Signup Don !! !!', 'User Notification')
+      ()=>this.Add=true
       ,
-      ()=>this.toastr.error('Error !!', 'Role Notification')
+      ()=>this.toastr.error('Error !!', 'Role Notification'),
       )
   }
   /*

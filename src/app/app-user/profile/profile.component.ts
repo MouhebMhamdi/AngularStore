@@ -16,6 +16,8 @@ export class ProfileComponent implements OnInit {
    users: Users;
   myForm: FormGroup;
   submitted = false;
+  file:File;
+  tab:any=[]
   constructor(private router:Router, private authService:AuthentificationService,private userService:UserService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
@@ -33,7 +35,8 @@ export class ProfileComponent implements OnInit {
       'street':new FormControl('',Validators.required),
       'city':new FormControl('',Validators.required),
       'state':new FormControl('',Validators.required),
-      'zip':new FormControl('',Validators.required)
+      'zip':new FormControl('',Validators.required),
+      'picture':new FormControl('')
     })
     console.log(this.verifUserRoleConncet(String(localStorage.getItem("email"))))
     this.authService.sharedUser.subscribe(
@@ -46,16 +49,17 @@ export class ProfileComponent implements OnInit {
 
    
   }
+
+  onFileSelected(event:any) {
+    this.file = event.target.files[0];
+  }
+  UploadImg(id:any){
+    this.userService.UploadImage(this.file,id).subscribe((res)=>{
+     
+    })
+  }
   verifUserRoleConncet(email:string){
- 
-  
-    this.authService.getUserConnect(String(email)).subscribe(user =>{
-    
-     console.log(user+"ezeeze") 
-   
-   
-}
-)
+    this.authService.getUserConnect(String(email)).subscribe(user =>{})
 }
 redirect(){
   this.router.navigate(['/']);
@@ -66,6 +70,8 @@ redirect(){
      return;
     }
     this.userService.updateUser(this.users,String(localStorage.getItem('data'))).subscribe((res)=>{
+    
+    this.UploadImg(this.users.idClient);
     this.toastr.success('Profile updated thanks !');
 
     }),()=>this.toastr.error("Error !","Update profile notification");

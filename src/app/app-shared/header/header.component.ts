@@ -63,11 +63,16 @@ export class HeaderComponent implements OnInit,OnChanges {
 
 
     this.authService.getUserConnect(String(email)).subscribe(user =>{
+<<<<<<< HEAD
 
      console.log(user+"ezeeze")
 
 
+=======
+     console.log(user+"ezeeze")  
+>>>>>>> 2cf299f661eeafbefc1aaa90245db2e6f9ae37eb
 }
+
 )
 }
   logout(){

@@ -1,6 +1,10 @@
-import { HttpClient,HttpErrorResponse  } from '@angular/common/http';
+import { HttpClient,HttpErrorResponse,HttpEvent,HttpRequest   } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+<<<<<<< HEAD
 import { BehaviorSubject, throwError } from 'rxjs';
+=======
+import { BehaviorSubject, Observable, throwError } from 'rxjs'; 
+>>>>>>> 2cf299f661eeafbefc1aaa90245db2e6f9ae37eb
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Users } from '../../core/model/Users';
@@ -18,7 +22,6 @@ export class UserService {
   constructor(private http:HttpClient) { }
 
   addUser(data:Users){
-    console.log(data)
     return this.http.post(this.url+'/user/registerUser/',data,{responseType: 'text'}).pipe(
 
       catchError(error => {
@@ -35,6 +38,18 @@ export class UserService {
 
   }
 
+  UploadImage(file: File , id : any): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+
+    formData.append('file', file);
+
+    const req = new HttpRequest('POST',this.url+"/user/addImgToUser/"+id, formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+
+    return this.http.request(req);
+  }
   updateUser(data:Users,id:string){
     return this.http.post(this.url+'/user/updateUser/'+id,data,{ observe: 'response' }).pipe(map((res) => {
       this.tab=res;
