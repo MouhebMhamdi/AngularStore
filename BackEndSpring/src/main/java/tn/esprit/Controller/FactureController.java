@@ -15,7 +15,7 @@ public class FactureController {
     @Autowired
     FactureServiceImpl factureService;
 
-    @PostMapping("addfacture")
+    @PostMapping("/addfacture")
     public String addfacture(@RequestBody Facture facture)
     {
         factureService.ajouterFacture(facture);
@@ -23,21 +23,21 @@ public class FactureController {
     }
 
 
-    @GetMapping("/deletfacture/{id}")
+    @DeleteMapping("/deletfacture/{id}")
     public String supprimerFacture(@PathVariable (value = "id")long id)
     {
         factureService.supprimerFacture(id);
         return "facture deleted";
     }
 
-    @GetMapping("/updatefacture/{id}")
-    public String updatefacture(@RequestBody Facture facture,@PathVariable (value = "id") long id)
+    @PutMapping("/updatefacture/{id}")
+    public String updatefacture(@RequestBody Facture facture,@PathVariable  long id)
     {
         factureService.updatefacture(facture,id);
         return "facture has been updated !";
     }
 
-    @GetMapping("getfactureid{id}")
+    @GetMapping("/getfactureid/{id}")
     public Facture getFctureById(@PathVariable long id)
     {
 
@@ -45,7 +45,7 @@ public class FactureController {
 
     }
 
-    @GetMapping("getallfacture")
+    @GetMapping("/getallfacture")
     public List<Facture> getAllFactur()
     {
 

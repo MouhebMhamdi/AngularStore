@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.Repositories.FactureRepository;
 import tn.esprit.model.Facture;
+import tn.esprit.model.Rayon;
 
 import java.util.List;
 
@@ -42,7 +43,13 @@ public class FactureServiceImpl implements FactureService{
 
     @Override
     public void updatefacture(Facture facture, Long id) {
-
+      Facture facture1 = factureRepository.findById(id).get();
+      if(facture.getDateFacture()!=null) facture1.setDateFacture(facture.getDateFacture());
+      if(facture.getMontantFacture()!=0) facture1.setMontantFacture(facture.getMontantFacture());
+      if(facture.getMontantRemise()!=0) facture1.setMontantRemise(facture.getMontantRemise());
+      if(facture.getMontantFacture()!=0) facture1.setMontantFacture(facture.getMontantFacture());
+      if(facture.getEtat()!=null) facture1.setEtat(facture.getEtat());
+factureRepository.save(facture1);
     }
 
     @Override

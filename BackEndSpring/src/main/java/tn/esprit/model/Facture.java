@@ -25,6 +25,16 @@ public class Facture implements  Serializable{
   private float montantRemise ;
   private float montantFacture ;
 
+  public String getEtat() {
+    return etat;
+  }
+
+  public void setEtat(String etat) {
+    this.etat = etat;
+  }
+
+  private String etat ;
+
   public float getMontantFacture() {
     return montantFacture;
   }

@@ -6,6 +6,7 @@ import tn.esprit.Repositories.AddToCartRepository;
 import tn.esprit.Repositories.OrderRepository;
 import tn.esprit.model.AddToCart;
 import tn.esprit.model.CheckOutCart;
+import tn.esprit.model.DetailProduit;
 import tn.esprit.model.Produit;
 
 import java.util.List;
@@ -112,4 +113,20 @@ public class CarteServiceImpl implements  CartService {
     return null;
 
   }
+
+
+  @Override
+  public AddToCart addproductbyuseridandproductid(AddToCart addToCart, Long userId, Long ProductId,double price,int qty) {
+    addToCart.setQty(qty);
+    addToCart.setPrice(price);
+    addToCart.setUser_id(userId);
+
+
+    addToCartRepository.save(addToCart);
+    return addToCart;
+  }
+
+
+
+
 }

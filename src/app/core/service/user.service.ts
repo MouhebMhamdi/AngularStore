@@ -1,6 +1,10 @@
 import { HttpClient,HttpErrorResponse,HttpEvent,HttpRequest   } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+<<<<<<< HEAD
+import { BehaviorSubject, throwError } from 'rxjs';
+=======
 import { BehaviorSubject, Observable, throwError } from 'rxjs'; 
+>>>>>>> 2cf299f661eeafbefc1aaa90245db2e6f9ae37eb
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Users } from '../../core/model/Users';
@@ -16,10 +20,10 @@ export class UserService {
   sharedUser = this.curUser.asObservable();
 
   constructor(private http:HttpClient) { }
-  
+
   addUser(data:Users){
     return this.http.post(this.url+'/user/registerUser/',data,{responseType: 'text'}).pipe(
-      
+
       catchError(error => {
             let errorMsg: string;
             if (error.error instanceof ErrorEvent) {
@@ -27,7 +31,7 @@ export class UserService {
             } else {
                 errorMsg = this.getServerErrorMessage(error);
             }
-  
+
             return throwError(errorMsg);
         })
     );
@@ -54,7 +58,7 @@ export class UserService {
   }
   addRoleTOUser(email:string,role:string){
     return this.http.get(this.url+'/user/addRoleToUser/'+email+'/'+role,{responseType: 'text'}).pipe(
-      
+
       catchError(error => {
             let errorMsg: string;
             if (error.error instanceof ErrorEvent) {
@@ -62,7 +66,7 @@ export class UserService {
             } else {
                 errorMsg = this.getServerErrorMessage(error);
             }
-  
+
             return throwError(errorMsg);
         })
     );
@@ -75,7 +79,7 @@ export class UserService {
       this.tab=res;
       console.log(this.tab)
       this.curUser.next(this.tab);
-      
+
     }));
   }
   private getServerErrorMessage(error: HttpErrorResponse): string {
@@ -93,7 +97,9 @@ export class UserService {
             return `Unknown Server Error: ${error.message}`;
         }
 
-  
+
 }
   }
+
+
 }

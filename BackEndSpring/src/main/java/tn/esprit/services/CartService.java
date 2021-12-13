@@ -2,6 +2,7 @@ package tn.esprit.services;
 
 import tn.esprit.model.AddToCart;
 import tn.esprit.model.CheckOutCart;
+import tn.esprit.model.Produit;
 
 import java.util.List;
 
@@ -15,7 +16,6 @@ List <AddToCart> addCartByUserAndProductId(long idProduit,long userId,int qty,do
   List <CheckOutCart>getAllCheckoutByUserId(long userId);
   List<CheckOutCart> saveProductsForCheckout(List<CheckOutCart> tmp)  throws Exception;
   List<AddToCart> removeAllCartByUserId(long userId);
-
-  //Checkout
+  public AddToCart addproductbyuseridandproductid(AddToCart addToCart, Long userId, Long ProductId,double price,int qty);  //Checkout
 
 }
