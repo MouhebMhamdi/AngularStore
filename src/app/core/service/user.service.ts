@@ -1,10 +1,9 @@
 import { HttpClient,HttpErrorResponse,HttpEvent,HttpRequest   } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-<<<<<<< HEAD
-import { BehaviorSubject, throwError } from 'rxjs';
-=======
-import { BehaviorSubject, Observable, throwError } from 'rxjs'; 
->>>>>>> 2cf299f661eeafbefc1aaa90245db2e6f9ae37eb
+
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+
+
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Users } from '../../core/model/Users';
