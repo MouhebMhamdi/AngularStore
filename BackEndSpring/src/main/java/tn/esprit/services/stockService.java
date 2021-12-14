@@ -13,7 +13,7 @@ public interface stockService {
      List<Stock> getAllStocks();
      void deleteStockById(long id);
      void deleteAllStocks();
-     void updateClient(Stock stock,long id);
+     void updateStock(Stock stock,long id);
      Stock getStockByProduit(Produit produit);
      void updateStockByProduit(Produit produit);
 

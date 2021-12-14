@@ -38,7 +38,7 @@ public class StockServiceImpl implements stockService{
 
     @Override
     public void deleteStockById(long id) {
-        stockRepository.findById(id);
+        stockRepository.deleteById(id);
     }
 
     @Override
@@ -47,13 +47,13 @@ public class StockServiceImpl implements stockService{
     }
 
     @Override
-    public void updateClient(Stock stock, long id) {
+    public void updateStock(Stock stock, long id) {
         Stock st=stockRepository.findById(id).get();
 
 
 
         if(stock.getQte()!=0) st.setQte(stock.getQte());
-
+        if(stock.getLibelle()!=null) st.setLibelle(stock.getLibelle());
         if(stock.getQtemin()!=0)st.setQtemin(stock.getQtemin());
 
         stockRepository.save(st);

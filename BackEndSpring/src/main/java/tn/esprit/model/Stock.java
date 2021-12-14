@@ -20,6 +20,8 @@ public class Stock implements Serializable {
 	private long idStock;
 	private int qte;
 	private int qtemin ;
+  private String libelle;
+
   @Cascade(org.hibernate.annotations.CascadeType.REMOVE)
 
 	@OneToMany(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER, mappedBy="stock")
