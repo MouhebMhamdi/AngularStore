@@ -1,6 +1,7 @@
 import {Rayon} from "./rayon";
 import {Stock} from "./stock";
 import {DetailProduit} from "./detailProduit";
+import {Category} from "./category";
 import {SubCategory} from "./subCategory";
 
 export class Product{
@@ -15,5 +16,6 @@ export class Product{
   stock : Stock;
   detailProduit : DetailProduit;
   detailFacture : string;
-  subCategory:SubCategory;
+  subCategory: SubCategory;
+  category: Category;
 }

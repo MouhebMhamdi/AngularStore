@@ -24,20 +24,20 @@ public class SubCategory {
 
     @Column
     private String nameSubCategory;
-  @Cascade(org.hibernate.annotations.CascadeType.REMOVE)
+  //@Cascade(org.hibernate.annotations.CascadeType.REMOVE)
 
-  @Nullable
-    @ManyToOne(fetch = FetchType.EAGER)  //multiple subcategories can have one category
-    @NotFound(action = NotFoundAction.IGNORE)
-    private Category category;
-
-
-  @OneToMany(mappedBy="subCategory",cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
-  @Nullable
-  @ToString.Exclude
-  @JsonIgnore
-  @NotFound(action = NotFoundAction.IGNORE)
-  private Set<Produit> produits;
+//  @Nullable
+//    @ManyToOne(fetch = FetchType.EAGER)  //multiple subcategories can have one category
+//    @NotFound(action = NotFoundAction.IGNORE)
+//    private Category category;
+//
+//
+//  @OneToMany(mappedBy="subCategory",cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
+//  @Nullable
+//  @ToString.Exclude
+//  @JsonIgnore
+//  @NotFound(action = NotFoundAction.IGNORE)
+//  private Set<Produit> produits;
 
 
 }

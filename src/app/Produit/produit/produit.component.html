@@ -1,0 +1,32 @@
+<div class="card " >
+  <img src="assets/img/products/{{product.image}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"><b>{{product.libelle}} -> {{product.category.nomCategory}}</b></h5>
+    <p class="card-text">{{product.detailProduit.descriptionProduit}}</p>
+    <p><b>Unit Price: </b>{{product.prixUnitaire | currency}} </p>
+    <p class="rating">
+      <!-- 1 star  -->
+      <i [class]="(product.review == 0) ? 'far fa-star fa-sm text-primary' : (product.review > 0 && product.review < 1) ? 'fas fa-star-half-alt fa-sm text-primary' : 'fas fa-star fa-sm text-primary'"></i>
+
+      <!-- 2 star  -->
+      <i [class]="(product.review > 1 && product.review < 2) ? 'fas fa-star-half-alt fa-sm text-primary' : (product.review >= 2) ? 'fas fa-star fa-sm text-primary' : 'far fa-star fa-sm text-primary'"></i>
+
+      <!-- 3 star  -->
+      <i [class]="(product.review > 2 && product.review < 3) ? 'fas fa-star-half-alt fa-sm text-primary' : (product.review >= 3) ? 'fas fa-star fa-sm text-primary' : 'far fa-star fa-sm text-primary'"></i>
+
+      <!-- 4 star  -->
+      <i [class]="(product.review > 3 && product.review < 4) ? 'fas fa-star-half-alt fa-sm text-primary' : (product.review >= 4) ? 'fas fa-star fa-sm text-primary' : 'far fa-star fa-sm text-primary'"></i>
+
+      <!-- 5 star  -->
+      <i [class]="(product.review> 4 && product.review < 5) ? 'fas fa-star-half-alt fa-sm text-primary' : (product.review >= 5) ? 'fas fa-star fa-sm text-primary' : 'far fa-star fa-sm text-primary'"></i>
+    </p>
+    <div >
+     &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+    <button class="btn btn-danger " (click)="deleteNotif()"><i class="bi bi-trash"></i></button>
+    &nbsp;&nbsp; &nbsp;&nbsp;
+    <button class="btn btn-primary  "(click)="updateNotif()"><i class="bi bi-arrow-clockwise"></i></button>
+   </div>
+  </div>
+</div>
+<br>
+

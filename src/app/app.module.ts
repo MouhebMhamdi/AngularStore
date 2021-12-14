@@ -19,15 +19,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LogoutComponent } from './authentificationAndRegister/logout/logout.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ResetPasswordComponent } from './authentificationAndRegister/reset-password/reset-password.component';
-import {NgxPaginationModule} from 'ngx-pagination'; 
+import {NgxPaginationModule} from 'ngx-pagination';
 import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './app-shared/not-found/not-found.component';
 import { AppSharedComponent } from './app-shared/app-shared.component';
 import { ContactComponent } from './contact/contact.component';
-
+import { ProduitComponent} from './Produit/produit/produit.component';
 import { ProfileComponent } from './app-user/profile/profile.component';
 import { DetailProductComponent } from './app-product/detail-product/detail-product.component';
 import { ShopProductsComponent } from './app-product/shop-products/shop-products.component';
+import {MainProductComponent} from './Produit/main-product/main-product.component';
+import {FormProductComponent} from './Produit/form-product/form-product.component';
 
 
 @NgModule({
@@ -38,6 +40,9 @@ import { ShopProductsComponent } from './app-product/shop-products/shop-products
     HeaderComponent,
     ContactComponent,
     AboutComponent,
+    ProduitComponent,
+    MainProductComponent,
+    FormProductComponent,
     NotFoundComponent,
     CheckoutComponent,
     AppCartComponent,
@@ -60,7 +65,7 @@ import { ShopProductsComponent } from './app-product/shop-products/shop-products
     BrowserAnimationsModule,
     ToastrModule.forRoot(),NgbModule,// ToastrModule added
     FontAwesomeModule,
-    
+
     NgxSpinnerModule,
     NgxPaginationModule
   ],

@@ -28,7 +28,7 @@ public class Category {
   @ToString.Exclude
   @JsonIgnore
   @NotFound(action = NotFoundAction.IGNORE)
-  private Set<SubCategory> subCategories;
+  private Set<Produit> produits;
 }
 
 

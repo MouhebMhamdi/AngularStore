@@ -33,6 +33,8 @@ public class Produit implements Serializable {
   private String image;
   @NotNull
   private float review;
+  private String docName ;
+  private String docType ;
 
   /*****Les associations*****/
   @Nullable
@@ -60,7 +62,7 @@ public class Produit implements Serializable {
   @Nullable
   @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
   @NotFound(action = NotFoundAction.IGNORE)
-  private SubCategory subCategory;
+  private Category category;
 
   @Nullable
   @NotFound(action = NotFoundAction.IGNORE)

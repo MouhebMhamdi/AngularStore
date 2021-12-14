@@ -36,7 +36,7 @@
                         <div *ngIf="myForm.controls['prenom'].hasError('required')" class="invalid-feedback">
                             <div>First Name is required</div>
                           </div>
-                   
+
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -51,15 +51,15 @@
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
                     <div class="form-group">
                         <label for="eMail">Date of Birthday : {{users.dateNaissance |date:'dd-MM-yyyy'}}</label>
-                        
+
                         <input type="date" class="form-control" id="date" asp-for="MyDate"   [(ngModel)]="users.dateNaissance" formControlName="dateNaissance" [ngClass]="{ 'is-invalid': submitted && myForm.controls.dateNaissance.errors }">
                         <div *ngIf="myForm.controls['dateNaissance'].hasError('required')" class="invalid-feedback">
                             <div>Date of Birthday is required</div>
                           </div>
-                    
+
                     </div>
                 </div>
-                
+
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
                     <div class="form-group">
                         <label for="phone">Phone</label>
@@ -78,6 +78,7 @@
                     </div>
                   </div>
                </div>
+               
             </div>
             <div class="row gutters">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">

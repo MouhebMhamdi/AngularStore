@@ -1,0 +1,32 @@
+
+<form [formGroup]="form" (ngSubmit)="addProduct(form)">
+  <div class="form-group">
+    <label>Title</label>
+    <input type="text" class="form-control" formControlName="title">
+  </div>
+
+
+  <div class="form-group">
+    <label>Price</label>
+    <input type="number" class="form-control" formControlName="price">
+  </div>
+
+  <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12">
+    <div class="form-group">
+        <label>Picture:</label>
+        <input  type="file" class="form-control" name="picture" formControlName="picture" (change)="onFileSelected($event)">
+        <div class="invalid-feedback">
+          <div>Picture is required</div>
+        </div>
+      </div>
+   </div>
+
+  <div class="form-group">
+    <label>Image</label>
+    <input type="text" class="form-control" formControlName="picture">
+  </div>
+
+
+  <input class="btn btn-primary" type="submit" value="Add product">
+  <input class="btn btn-secondary" type="reset" value="Reset">
+</form>

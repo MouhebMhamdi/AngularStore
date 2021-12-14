@@ -10,5 +10,6 @@ public interface ProduitService {
   Produit retrieveProduit(Long id);
   void deleteProduit(Long id);
   Produit updateProduit(Produit p);
+  Produit getproduitByid(long id);
 
 }

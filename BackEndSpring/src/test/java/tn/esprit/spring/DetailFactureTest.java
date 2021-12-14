@@ -19,7 +19,6 @@ public class DetailFactureTest {
         DetailFacture d=new DetailFacture();
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date(System.currentTimeMillis());
-
         d.setDateCreation(date);
         d.setDateDernierModification(date);
         detailFactureImpl.AddDetailFacture(d);

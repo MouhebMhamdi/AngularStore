@@ -1,0 +1,14 @@
+<button class="btn btn-warning " (click)="showForm()" style="float: right;">Add new Product</button>
+<br><br><br>
+<app-form-product (addEvent)="saveProduct($event)"
+                  *ngIf="showFormTemplate" [updateProduct]="inputProduct">
+</app-form-product>
+
+
+<div class="row" *ngIf="!showFormTemplate">
+  <app-produit class="col-md-3" *ngFor="let object of listProduct"
+               [product]="object"
+               (deleteEvent)="delete($event)"
+               (updateEvent)="updateForm($event)"></app-produit>
+</div>
+
