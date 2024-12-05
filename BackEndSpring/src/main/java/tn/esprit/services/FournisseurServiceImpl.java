@@ -1,5 +1,6 @@
 package tn.esprit.services;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -32,7 +33,9 @@ public class FournisseurServiceImpl implements FournisseurService{
     }
     @Override
     public List<Fournisseur> getAllFournisseur() {
-    	return fourniseurRepository.findAll();
+    	List<Fournisseur> LF = new ArrayList<Fournisseur>();
+    	LF.addAll(fourniseurRepository.findAll());
+    	return LF;
     }
 
     @Override
